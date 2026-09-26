@@ -1,4 +1,4 @@
-import { agents, anchorLabel, runSteps, topicLabels } from "@auditiq/shared";
+import { agents, anchorLabel, clauseName, runSteps, topicLabels } from "@auditiq/shared";
 import { useQuery } from "@tanstack/react-query";
 import { Circle, CircleCheck, CircleDot, ExternalLink, TriangleAlert } from "lucide-react";
 import { PriorityIcon, TaskIcon } from "../../components/icons.tsx";
@@ -111,7 +111,7 @@ export function FindingBody({ finding }: { finding: Finding }) {
       {finding.citations.map((citation) => (
         <div key={citation.quoteHash} className="border-l-2 border-line pl-3.5">
           <div className="mb-0.5 flex items-center gap-1.5">
-            <span className="grow font-semibold">Section {anchorLabel(citation.anchorId)}</span>
+            <span className="grow font-semibold">{clauseName(citation.anchorId)}</span>
             <CircleCheck className="size-4 text-ok" />
             <span className="text-xs text-ok">Matches the contract</span>
           </div>

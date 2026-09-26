@@ -33,7 +33,9 @@ export const auth = betterAuth({
   baseURL: env.BASE_URL,
   secret: env.AUDITIQ_SECRET,
   // Production trusts only BASE_URL. Development trusts whatever origin the Vite dev server is reached on.
-  trustedOrigins: env.isProduction ? [env.BASE_URL] : (request) => [env.BASE_URL, request?.headers.get("origin") ?? env.BASE_URL],
+  trustedOrigins: env.isProduction
+    ? [env.BASE_URL]
+    : (request) => [env.BASE_URL, request?.headers.get("origin") ?? env.BASE_URL],
   database: drizzleAdapter(db, {
     provider: "sqlite",
     schema: { user: schema.user, session: schema.session, account: schema.account, verification: schema.verification },

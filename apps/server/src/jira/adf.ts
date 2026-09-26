@@ -1,4 +1,4 @@
-import { agents, anchorLabel, topicLabels } from "@auditiq/shared";
+import { agents, clauseName, topicLabels } from "@auditiq/shared";
 import type { findings } from "../db/schema.ts";
 
 // Atlassian Document Format builders for what AuditIQ writes to Jira, plus a reader that
@@ -30,10 +30,7 @@ export function findingDescription({ finding, contract, raisedBy, appUrl }: Find
     paragraph(text(finding.requiredAction)),
     heading(3, "Evidence"),
     paragraph(bold("Contract term: "), text(finding.affectedTerm)),
-    ...finding.citations.flatMap((citation) => [
-      paragraph(bold(`Section ${anchorLabel(citation.anchorId)}`)),
-      quote(citation.quote),
-    ]),
+    ...finding.citations.flatMap((citation) => [paragraph(bold(clauseName(citation.anchorId))), quote(citation.quote)]),
     heading(3, "Source"),
     paragraph(
       text(`${contract.number ?? contract.filename}${contract.customer ? `, ${contract.customer}` : ""}. `),
@@ -64,7 +61,7 @@ export function watcherReply(input: { reply: string; clauses: string[]; marker: 
       .filter(Boolean)
       .map((line) => paragraph(text(line))),
     paragraph(
-      text(`Based on section ${input.clauses.map(anchorLabel).join(", ")}. A person decides the outcome.`, [
+      text(`Based on ${input.clauses.map(clauseName).join(", ")}. A person decides the outcome.`, [
         { type: "em" },
       ]),
     ),

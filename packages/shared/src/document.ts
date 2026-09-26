@@ -38,3 +38,9 @@ export function anchorLabel(id: string): string {
   if (id.startsWith("exhibit-")) return `Exhibit ${id.slice(8).toUpperCase()}`;
   return id;
 }
+
+/** "Section 5.2.3" for numbered clauses. Articles, exhibits, and the preamble already name themselves. */
+export function clauseName(id: string): string {
+  if (id === "preamble") return "Preamble";
+  return id.startsWith("sec-") ? `Section ${anchorLabel(id)}` : anchorLabel(id);
+}

@@ -73,7 +73,7 @@ function FindingsPage() {
         <EmptyState title="No findings here">Findings appear when a contract's analysis finishes.</EmptyState>
       ) : (
         <Group orientation="horizontal" className="min-h-0 grow border-t border-line">
-          <Panel id="table" defaultSize={62} minSize="360px" className="flex flex-col">
+          <Panel id="table" defaultSize="62%" minSize="360px" className="flex flex-col">
             <div className="min-h-0 grow overflow-auto px-4">
               <table className="w-full table-fixed border-collapse">
                 <thead>
