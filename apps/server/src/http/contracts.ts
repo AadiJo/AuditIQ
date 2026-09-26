@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import { AgentIdSchema } from "@auditiq/shared";
-import { zValidator } from "@hono/zod-validator";
 import { eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
@@ -9,7 +8,7 @@ import { documents } from "../db/schema.ts";
 import { filePath, storeUpload, UploadError } from "../documents/store.ts";
 import { JiraNotConfiguredError, publishFindings } from "../jira/publisher.ts";
 import { RunError, startRun } from "../runs/runner.ts";
-import { type AppEnv, badRequest, requireUser } from "./context.ts";
+import { type AppEnv, badRequest, requireUser, validate } from "./context.ts";
 import { contractListView, findingViews, latestRuns, runView } from "./views.ts";
 
 function getDocument(id: string) {
@@ -85,7 +84,7 @@ export const contractRoutes = new Hono<AppEnv>()
 
   .post(
     "/:id/runs",
-    zValidator("json", z.object({ agent: AgentIdSchema, runtime: z.enum(["claude", "codex"]).optional() })),
+    validate("json", z.object({ agent: AgentIdSchema, runtime: z.enum(["claude", "codex"]).optional() })),
     async (c) => {
       const { agent, runtime } = c.req.valid("json");
       try {
@@ -99,16 +98,12 @@ export const contractRoutes = new Hono<AppEnv>()
   )
 
   // Publish findings to Jira. Unverified findings come back as blocked with reasons.
-  .post(
-    "/:id/publish",
-    zValidator("json", z.object({ findingIds: z.array(z.string()).min(1).max(200) })),
-    async (c) => {
-      const document = getDocument(c.req.param("id"));
-      try {
-        return c.json(await publishFindings(document.id, c.req.valid("json").findingIds, c.var.user.id));
-      } catch (error) {
-        if (error instanceof JiraNotConfiguredError) badRequest(error.message, 409);
-        throw error;
-      }
-    },
-  );
+  .post("/:id/publish", validate("json", z.object({ findingIds: z.array(z.string()).min(1).max(200) })), async (c) => {
+    const document = getDocument(c.req.param("id"));
+    try {
+      return c.json(await publishFindings(document.id, c.req.valid("json").findingIds, c.var.user.id));
+    } catch (error) {
+      if (error instanceof JiraNotConfiguredError) badRequest(error.message, 409);
+      throw error;
+    }
+  });

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/*
+ * AuditIQ follows Atlassian's design language so it reads as one tool with Jira: the
+ * system font stack, Jira's neutrals and blue, its status lozenges and priority icons.
+ * Contract text renders in a serif on a page, so source and analysis never blur.
+ */
+@theme {
+  --font-sans:
+    "Atlassian Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+  --font-serif: Cambria, Georgia, "Times New Roman", serif;
+
+  --color-ink: #292a2e;
+  --color-ink-2: #505258;
+  --color-ink-3: #6b6e76;
+  --color-ink-4: #8c8f97;
+  --color-line: #dddee1;
+  --color-line-input: #8c8f97;
+  --color-sunken: #f8f8f8;
+  --color-neutral: #f0f1f2;
+  --color-neutral-hover: #e2e3e4;
+  --color-selected: #e9f2fe;
+  --color-brand: #1868db;
+  --color-brand-hover: #1558bc;
+  --color-ok: #1f845a;
+  --color-ok-bg: #dcfff1;
+  --color-danger: #c9372c;
+  --color-danger-bg: #ffeceb;
+  --color-warn: #9e4c00;
+  --color-warn-bg: #fff5db;
+  --color-mark: #fff0b3;
+  --color-mark-line: #e2b203;
+  --color-mark-active: #f8e6a0;
+  --color-navy: #1c2b41;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: white;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keyboard focus is always visible; mouse clicks don't draw rings. */
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 1px;
+}
+
+[data-separator] {
+  background: var(--color-line);
+}
+[data-separator="hover"],
+[data-separator="active"],
+[data-separator="focus"] {
+  background: var(--color-brand);
+}
+
+mark.quote {
+  background: var(--color-mark);
+  border-bottom: 2px solid var(--color-mark-line);
+  color: inherit;
+}
+mark.quote[data-active] {
+  background: var(--color-mark-active);
+}

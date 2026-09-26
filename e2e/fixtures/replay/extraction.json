@@ -1,0 +1,4898 @@
+{
+  "progress": [
+    {
+      "delayMs": 400,
+      "outputChars": 0
+    },
+    {
+      "delayMs": 238,
+      "outputChars": 71
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 106
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 141
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 176
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 211
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 246
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 281
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 316
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 351
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 386
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 421
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 456
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 491
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 526
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 557
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 592
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 627
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 662
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 697
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 732
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 767
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 802
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 837
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 872
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 907
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 942
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 977
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1012
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1047
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 1082
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1117
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1152
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 1187
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1222
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1257
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 1292
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1327
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1362
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1397
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1432
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1467
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1502
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1537
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1572
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1607
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1642
+    },
+    {
+      "delayMs": 400,
+      "outputChars": 1675
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1710
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1745
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1780
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1815
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1850
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1885
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1920
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1955
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 1990
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2025
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2060
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2095
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2130
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2165
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2200
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 2235
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2270
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2305
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2340
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2375
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2410
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 2445
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2480
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2515
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2550
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2585
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2620
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2655
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2690
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 2725
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2760
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2795
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2830
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2865
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2900
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 2935
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 2970
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 3005
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3040
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 3075
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3110
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3145
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3180
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3215
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3250
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3285
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3320
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3355
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 3390
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3425
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3460
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3495
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3530
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3565
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3600
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3635
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3670
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3705
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3740
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3775
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3810
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3845
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3880
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3915
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3950
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 3985
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 4020
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4055
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4090
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4125
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4160
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 4195
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4230
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4265
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4300
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4335
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4370
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4405
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4440
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4471
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4506
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4541
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4576
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4611
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4646
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4681
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4716
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4751
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4786
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4821
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4856
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4891
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4926
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4961
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 4996
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5031
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5066
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5101
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5136
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5171
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5206
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5241
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5276
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5311
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5346
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5381
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5416
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5451
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5486
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5521
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5556
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5591
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5626
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5661
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5696
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5731
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5766
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5801
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5836
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5871
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5906
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5941
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 5976
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6011
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6046
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6081
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6116
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6151
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6186
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 6215
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6250
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6285
+    },
+    {
+      "delayMs": 5,
+      "outputChars": 6320
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6355
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6390
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6425
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6460
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6495
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6530
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6565
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6600
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6635
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6670
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6705
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6740
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6775
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6810
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 6845
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 6880
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6915
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6950
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 6985
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7020
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 7055
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7090
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7125
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7160
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 7195
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7230
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7265
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7300
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7335
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7370
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7405
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7440
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7475
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7510
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7545
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7580
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7615
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7650
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7685
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7720
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7755
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7790
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7825
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7860
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7895
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7930
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 7965
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8000
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8035
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8070
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8105
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8140
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8175
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8210
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8245
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8280
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8315
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8350
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8385
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8420
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8454
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8489
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8524
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8559
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8594
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8629
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8664
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8699
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8734
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8769
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8804
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8839
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8874
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8909
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8944
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 8979
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9014
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9049
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9084
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9119
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9154
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9189
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9224
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9259
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9294
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9329
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9364
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9399
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 9434
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9469
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9504
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9539
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9574
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9609
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9644
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9679
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9714
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9749
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9784
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9819
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9854
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9889
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9924
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9959
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 9994
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10029
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10064
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10099
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10134
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10169
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10204
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10239
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10274
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10309
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10344
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10379
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10414
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10449
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10484
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10519
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10554
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10589
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10624
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10659
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10694
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10729
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10764
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10799
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10834
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10869
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10904
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10939
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 10974
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11009
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11044
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11079
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11114
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11149
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11184
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11219
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11249
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11284
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11319
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11354
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11389
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11424
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11459
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11494
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11529
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11564
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11599
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11634
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11669
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 11704
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11739
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11774
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11809
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11844
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11879
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11914
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11949
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 11984
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12019
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12054
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12089
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12124
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12159
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12194
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12229
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12264
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12299
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12334
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12369
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12404
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12439
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12474
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 12509
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12544
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12579
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12614
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12649
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12684
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12719
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12754
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12789
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12824
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12859
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12894
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12929
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12964
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 12999
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13034
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13069
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13104
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13139
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13174
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13209
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13244
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13279
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13314
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13349
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13384
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13419
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13454
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13489
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 13524
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13559
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13594
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13629
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 13664
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13699
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13734
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13769
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13804
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13839
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13874
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13909
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13944
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 13979
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14014
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14049
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14084
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14119
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14154
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14189
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14224
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14259
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14294
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14329
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14364
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14399
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14434
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14469
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14504
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14539
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14574
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14609
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 14644
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14679
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14714
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14749
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14784
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14819
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14854
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14889
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14924
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14959
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 14994
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15029
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15064
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15099
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15134
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15169
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15204
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15239
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15274
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15309
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15344
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15379
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15414
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15449
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15484
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15519
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15554
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15589
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15624
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15659
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15694
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15729
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15764
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15799
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15834
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15869
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15904
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15939
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 15974
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16009
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16044
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16079
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16114
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16149
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16184
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16219
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16254
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16289
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 16324
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16359
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16394
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16429
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16464
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16499
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16534
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16569
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16604
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16639
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16674
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16709
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16744
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16779
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16814
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16849
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16884
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16919
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16954
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 16989
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17024
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17059
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17094
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17129
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17164
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17199
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17234
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17269
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17304
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17339
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17374
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17409
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17444
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17479
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17514
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17549
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17584
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17619
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17654
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17689
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17724
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17759
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17794
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17829
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17864
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17899
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 17934
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 17969
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18004
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18039
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18074
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18109
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18144
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18179
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18214
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18249
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18284
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18319
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18354
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18389
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18424
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18459
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18494
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18529
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18564
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18599
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18634
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18669
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18704
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18739
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18774
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18809
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18844
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18879
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18914
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18949
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 18984
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19019
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19054
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19089
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19124
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19159
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19194
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19229
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19264
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19299
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19334
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19369
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19404
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19439
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19474
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19509
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 19544
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19579
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19614
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19649
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19684
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19719
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19754
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 19789
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19824
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19859
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19894
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19929
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 19964
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 19999
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20034
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20069
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20104
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20139
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20174
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20209
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20244
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20279
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20314
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 20349
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20384
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20419
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20454
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20489
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20524
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20559
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20594
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20629
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20664
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20699
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20734
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20769
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20804
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20839
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20874
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20909
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20944
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 20979
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21014
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21049
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21084
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21119
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21154
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21189
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21224
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21259
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21294
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21329
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21364
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21399
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21434
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21469
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21504
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21539
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21574
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21609
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21644
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21679
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21714
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21749
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21784
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21819
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21854
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21889
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21924
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21959
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 21994
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22029
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22064
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22099
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22134
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22169
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22204
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22239
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22274
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22309
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22344
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22379
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22414
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22449
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22484
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22519
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22554
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22589
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22624
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22659
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22694
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22729
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22764
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22799
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22834
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22869
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22904
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22939
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 22974
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23009
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23044
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23079
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23114
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23149
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23184
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23219
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23254
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23289
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23324
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23359
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23394
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23429
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23464
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23499
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23534
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23569
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23604
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23639
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 23674
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23709
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23744
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23779
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23814
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23849
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23884
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23919
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23954
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 23989
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24024
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24059
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24094
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24129
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24164
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24199
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24234
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24269
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24304
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24339
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24374
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24409
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24444
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24479
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 24514
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24549
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24584
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24619
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24654
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24689
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24724
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24759
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24794
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24829
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24864
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24899
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24934
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 24969
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25004
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25039
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25074
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25109
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25144
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25179
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25214
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25249
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25284
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25319
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25354
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25389
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25424
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25459
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25494
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25529
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25564
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25599
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25634
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25669
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 25704
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25739
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25774
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25809
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25844
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25879
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25914
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25949
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 25984
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26019
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26054
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26089
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26124
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26159
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26194
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26229
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26264
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26299
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26334
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26369
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26404
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26439
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26474
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26509
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26544
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26579
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26614
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26649
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26684
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26719
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26754
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26789
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26824
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26859
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26894
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26929
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26964
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 26999
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27034
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27069
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27104
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 27139
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27174
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27209
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27244
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27279
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27314
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27349
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27384
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27419
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27454
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27489
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27524
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27559
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27594
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 27629
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27664
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27699
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27734
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27769
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27804
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27839
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27874
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27909
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27944
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 27979
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28014
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28049
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28084
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28119
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28154
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28189
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 28224
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28259
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28294
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28329
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28364
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28399
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28434
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28469
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28504
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28539
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28574
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28609
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28644
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28679
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28714
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28749
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28784
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28819
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28854
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28889
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28924
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28959
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 28994
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29029
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29064
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29099
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29134
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29169
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29204
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29239
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29274
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29309
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29344
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29379
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29414
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29449
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29484
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29519
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29554
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29589
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29624
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29659
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29694
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 29729
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29764
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29799
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29834
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29869
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29904
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29939
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 29974
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30009
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30044
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30079
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30114
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30149
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30184
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30219
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30254
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30289
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30324
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30359
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30394
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30429
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30464
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30499
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30534
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30569
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30604
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30639
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30674
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30709
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30744
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30779
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30814
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30849
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30884
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30919
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30954
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 30989
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31024
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31059
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31094
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31129
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31164
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31199
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31234
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31269
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31304
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31339
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31374
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31409
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31444
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31479
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31514
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31549
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31584
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31619
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31654
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31689
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31724
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31759
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31794
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31829
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31864
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31899
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31934
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 31969
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32004
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32039
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32074
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32109
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32144
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32179
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32214
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32249
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32284
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32319
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32354
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32389
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32424
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32459
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32494
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32529
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32564
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32599
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32634
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32669
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32704
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32739
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32774
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32809
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32844
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32879
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32914
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32949
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 32984
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33019
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33054
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33089
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33124
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33159
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33194
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33229
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33264
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33299
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33334
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33369
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33404
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33439
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33474
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33509
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33544
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33579
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33614
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33649
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33684
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33719
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33754
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33789
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33824
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33859
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33894
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33929
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33964
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 33999
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34034
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34069
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34104
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34139
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34174
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34209
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34244
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34279
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34314
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34349
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34380
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34415
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34450
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34485
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34520
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34555
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34590
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34625
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34660
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34695
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34730
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34765
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34800
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34835
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34870
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34905
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34940
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 34975
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35010
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35045
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35080
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35115
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35150
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35185
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35220
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35255
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35290
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35325
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35360
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35395
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35430
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35465
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35500
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35535
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35570
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35605
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35640
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35675
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35710
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35745
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35780
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35815
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35850
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35885
+    },
+    {
+      "delayMs": 1,
+      "outputChars": 35920
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35955
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 35990
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36025
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36060
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36095
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36130
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36165
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36200
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36235
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36270
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36305
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36340
+    },
+    {
+      "delayMs": 0,
+      "outputChars": 36375
+    }
+  ],
+  "output": {
+    "contract": {
+      "number": "NW-2026-0187",
+      "title": "Master Subscription, Equipment, and Services Agreement",
+      "vendor": "Northwind Analytics, Inc.",
+      "customer": "Contoso Retail Group, LLC",
+      "effectiveDate": "2026-07-01",
+      "endDate": "2028-06-30",
+      "totalValue": "$246,000 in fixed fees (per Section A.2), before a $5,000 marketing development credit, plus usage fees and subject to service credits, late Go-Live credits, volume repricing, and most-favored-customer repricing"
+    },
+    "summary": "Northwind Analytics sells Contoso Retail Group a 24-month Insight Cloud subscription ($8,000/month, $192,000), 40 Beacon S2 Devices bundled with 24 months of Extended Care ($18,000), and fixed-fee Implementation Services ($36,000), for stated total fixed consideration of $246,000 effective July 1, 2026. The arrangement contains several separation and measurement questions: Extended Care is a service-type warranty bundled into the Device price with no stated standalone selling price, the renewal discount in Section 7.2 is described as unavailable to other customers and likely conveys a material right, and the transaction price is exposed to usage fees, service credits, a late Go-Live credit, a retroactive volume price reduction, and a most-favored-customer clause. A $5,000 marketing development credit is expressly given without any distinct good or service in return and should reduce the transaction price. Contract term is also in question because Customer may terminate for convenience after month 12 with a refund of prepaid subscription fees, which may shorten the enforceable contract term to twelve months.",
+    "terms": [
+      {
+        "label": "Parties",
+        "value": "Northwind Analytics, Inc. (Vendor, Seattle WA) and Contoso Retail Group, LLC (Customer, Columbus OH)",
+        "anchorIds": [
+          "preamble"
+        ]
+      },
+      {
+        "label": "Agreement date and Effective Date",
+        "value": "Agreement Date June 15, 2026; Effective Date July 1, 2026",
+        "anchorIds": [
+          "preamble"
+        ]
+      },
+      {
+        "label": "Signatures",
+        "value": "Priya Raman, Chief Revenue Officer (Vendor) and Marcus Bell, Vice President of Finance (Customer), both on June 15, 2026",
+        "anchorIds": [
+          "exhibit-a"
+        ]
+      },
+      {
+        "label": "Subscription Term",
+        "value": "24 months beginning on the Effective Date (July 1, 2026 through June 30, 2028)",
+        "anchorIds": [
+          "sec-2.2",
+          "sec-8.1"
+        ]
+      },
+      {
+        "label": "Payment terms",
+        "value": "Invoices due 60 days after invoice date; late amounts accrue 1% per month interest",
+        "anchorIds": [
+          "sec-6.5"
+        ]
+      },
+      {
+        "label": "Renewal option",
+        "value": "Customer may renew for one additional 12-month term on 60 days' written notice before the Subscription Term ends",
+        "anchorIds": [
+          "sec-7.1"
+        ]
+      },
+      {
+        "label": "Renewal pricing",
+        "value": "Then-current list price less 20%; discount not offered to customers who have not purchased an initial 24-month subscription",
+        "anchorIds": [
+          "sec-7.2"
+        ]
+      },
+      {
+        "label": "Termination for convenience",
+        "value": "Available to Customer after the first 12 months on 60 days' notice; prepaid Subscription Fees for the post-termination period are refunded; Implementation Fees and Device purchases are non-refundable",
+        "anchorIds": [
+          "sec-8.2"
+        ]
+      },
+      {
+        "label": "Termination for cause",
+        "value": "Either party on material breach uncured within 30 days after written notice",
+        "anchorIds": [
+          "sec-8.3"
+        ]
+      },
+      {
+        "label": "Acceptance mechanism",
+        "value": "Customer signs a Go-Live Certificate or delivers a written list of material defects within 10 business days after Vendor's readiness notice; otherwise Go-Live is deemed to have occurred",
+        "anchorIds": [
+          "sec-4.3",
+          "sec-1.4"
+        ]
+      },
+      {
+        "label": "Go-Live definition",
+        "value": "Date Customer signs a Go-Live Certificate confirming the Platform processes live data from at least 25 Stores",
+        "anchorIds": [
+          "sec-1.4"
+        ]
+      },
+      {
+        "label": "Subcontracting / hosting",
+        "value": "Vendor hosts on third-party cloud infrastructure it selects and remains fully responsible for availability, security, and the acts of its hosting providers",
+        "anchorIds": [
+          "sec-2.3"
+        ]
+      },
+      {
+        "label": "Title and risk of loss on Devices",
+        "value": "FOB Vendor's warehouse; title and risk pass to Customer on delivery to the carrier",
+        "anchorIds": [
+          "sec-3.2"
+        ]
+      },
+      {
+        "label": "Limitation of liability",
+        "value": "Except for confidentiality breaches, liability capped at fees paid in the 12 months before the claim",
+        "anchorIds": [
+          "sec-9.2"
+        ]
+      },
+      {
+        "label": "Governing law",
+        "value": "State of Washington",
+        "anchorIds": [
+          "sec-9.3"
+        ]
+      },
+      {
+        "label": "Entire agreement",
+        "value": "The Agreement including Exhibits is the entire agreement on its subject matter",
+        "anchorIds": [
+          "sec-9.4"
+        ]
+      }
+    ],
+    "scope": [
+      {
+        "label": "Platform",
+        "value": "Insight Cloud hosted analytics software, non-exclusive non-transferable access for Customer's internal business purposes during the Subscription Term",
+        "anchorIds": [
+          "sec-1.1",
+          "sec-2.1"
+        ]
+      },
+      {
+        "label": "Modules included",
+        "value": "Traffic, Conversion, and Staffing modules; the Forecasting module is not included",
+        "anchorIds": [
+          "sec-A.1"
+        ]
+      },
+      {
+        "label": "Store capacity",
+        "value": "Subscription fee covers up to 300 Stores; a Store is a retail location with at least one Device installed",
+        "anchorIds": [
+          "sec-6.1",
+          "sec-1.3"
+        ]
+      },
+      {
+        "label": "Data event allocation",
+        "value": "Up to 50,000,000 data events per calendar month included; excess billed as Usage Fees",
+        "anchorIds": [
+          "sec-2.4"
+        ]
+      },
+      {
+        "label": "Devices",
+        "value": "40 Beacon S2 in-store sensors purchased by Customer at $450 each",
+        "anchorIds": [
+          "sec-1.2",
+          "sec-3.1",
+          "exhibit-a"
+        ]
+      },
+      {
+        "label": "Standard warranty",
+        "value": "12 months from delivery against defects in materials and workmanship",
+        "anchorIds": [
+          "sec-3.3"
+        ]
+      },
+      {
+        "label": "Extended Care",
+        "value": "Additional 24 months per Device including advance replacement within two business days and quarterly firmware tuning visits; included in the Device price and not sold separately",
+        "anchorIds": [
+          "sec-3.4"
+        ]
+      },
+      {
+        "label": "Implementation Services",
+        "value": "Platform configuration, Device installation in up to 40 Stores, point-of-sale integration, and staff training",
+        "anchorIds": [
+          "sec-4.1"
+        ]
+      },
+      {
+        "label": "Custom reports (optional)",
+        "value": "Developed on Customer's written request at $180/hour, capped at 200 hours absent a signed change order",
+        "anchorIds": [
+          "sec-4.5"
+        ]
+      },
+      {
+        "label": "Service level commitment",
+        "value": "99.5% Platform availability each calendar month, excluding maintenance announced at least 48 hours in advance",
+        "anchorIds": [
+          "sec-5.1"
+        ]
+      }
+    ],
+    "pricing": [
+      {
+        "label": "Subscription Fee",
+        "value": "$8,000 per month for up to 300 Stores, invoiced quarterly in advance ($192,000 over 24 months)",
+        "anchorIds": [
+          "sec-6.1",
+          "sec-A.2",
+          "exhibit-a"
+        ]
+      },
+      {
+        "label": "Device price",
+        "value": "$450 each × 40 Devices = $18,000, billed on shipment; price includes Extended Care",
+        "anchorIds": [
+          "sec-3.1",
+          "sec-3.4",
+          "exhibit-a",
+          "sec-A.2"
+        ]
+      },
+      {
+        "label": "Implementation Fee",
+        "value": "$36,000 fixed, invoiced 50% on the Agreement Date and 50% at Go-Live",
+        "anchorIds": [
+          "sec-4.2",
+          "exhibit-a"
+        ]
+      },
+      {
+        "label": "Total fixed consideration",
+        "value": "$246,000 ($192,000 subscription + $18,000 devices + $36,000 implementation), before the marketing development credit",
+        "anchorIds": [
+          "sec-A.2"
+        ]
+      },
+      {
+        "label": "Usage Fees (variable)",
+        "value": "$0.02 per 1,000 data events above the 50,000,000 monthly allocation, billed monthly in arrears",
+        "anchorIds": [
+          "sec-6.3",
+          "sec-2.4",
+          "exhibit-a"
+        ]
+      },
+      {
+        "label": "Late Go-Live Credit (variable)",
+        "value": "$1,000 per full week of delay if Go-Live has not occurred by October 31, 2026 for reasons within Vendor's control, capped at $8,000",
+        "anchorIds": [
+          "sec-4.4"
+        ]
+      },
+      {
+        "label": "Service Credits (variable)",
+        "value": "5% of the month's Subscription Fee for each full 0.5% below 99.5% availability, capped at 25% of that month's Subscription Fee; sole remedy for unavailability",
+        "anchorIds": [
+          "sec-5.2"
+        ]
+      },
+      {
+        "label": "Volume price reduction (variable)",
+        "value": "If Customer operates more than 300 Stores at any time, the per-Store fee for all Stores falls 10% for the entire Subscription Term, with a credit for the difference on fees already paid",
+        "anchorIds": [
+          "sec-6.2"
+        ]
+      },
+      {
+        "label": "Most Favored Customer repricing (variable)",
+        "value": "Subscription Fee reduced to match any lower per-Store price offered to a similarly sized retail customer, for the remainder of the Subscription Term",
+        "anchorIds": [
+          "sec-6.6"
+        ]
+      },
+      {
+        "label": "Marketing development credit",
+        "value": "One-time $5,000 credit applied against Customer's first invoice; no distinct good or service required in exchange",
+        "anchorIds": [
+          "sec-6.4"
+        ]
+      },
+      {
+        "label": "Custom report rate",
+        "value": "$180 per hour, not to exceed 200 hours without a signed change order",
+        "anchorIds": [
+          "sec-4.5"
+        ]
+      },
+      {
+        "label": "Late payment interest",
+        "value": "1% per month on late amounts",
+        "anchorIds": [
+          "sec-6.5"
+        ]
+      }
+    ],
+    "obligations": [
+      {
+        "name": "Insight Cloud subscription (Platform access)",
+        "recognition": "Over time, likely ratably over the 24-month Subscription Term",
+        "note": "Stand-ready access to a hosted platform; Vendor controls hosting and is responsible for its providers, supporting a series-of-distinct-services conclusion. Monthly measurement is affected by service credits and potential volume/MFC repricing.",
+        "anchorIds": [
+          "sec-2.1",
+          "sec-2.2",
+          "sec-2.3",
+          "sec-6.1"
+        ]
+      },
+      {
+        "name": "Beacon S2 Devices (40 units)",
+        "recognition": "Point in time, on delivery to the carrier (FOB Vendor's warehouse)",
+        "note": "Title and risk of loss pass at carrier delivery; consider whether shipping is a fulfillment activity. The stated $450 unit price bundles Extended Care, so the device price is not a clean standalone selling price.",
+        "anchorIds": [
+          "sec-3.1",
+          "sec-3.2",
+          "exhibit-a"
+        ]
+      },
+      {
+        "name": "Extended Care (24 months after standard warranty)",
+        "recognition": "Likely over time over the 24-month Extended Care period, if concluded to be a separate performance obligation",
+        "note": "Advance replacement and quarterly firmware tuning visits go beyond assurance that the Device conforms to specification, indicating a service-type warranty. No standalone selling price is stated and the clause says it is not sold separately, so SSP must be estimated.",
+        "anchorIds": [
+          "sec-3.4",
+          "sec-3.3"
+        ]
+      },
+      {
+        "name": "Standard 12-month Device warranty",
+        "recognition": "Not a performance obligation; accrue under ASC 460 if it is an assurance warranty",
+        "note": "Covers only defects in materials and workmanship, which is consistent with an assurance warranty.",
+        "anchorIds": [
+          "sec-3.3"
+        ]
+      },
+      {
+        "name": "Implementation Services",
+        "recognition": "Depends on distinctness; if distinct, likely over time as the services are performed through Go-Live",
+        "note": "Configuration, installation, POS integration, and training may be capable of being performed by others, but the reviewer must assess whether they significantly customize or modify the Platform. Acceptance is substantive-looking but has a deemed-acceptance backstop.",
+        "anchorIds": [
+          "sec-4.1",
+          "sec-4.2",
+          "sec-4.3"
+        ]
+      },
+      {
+        "name": "Material right — renewal discount",
+        "recognition": "Over time, when the renewal option is exercised or expires",
+        "note": "Only a performance obligation if the 20% renewal discount is incremental to what Vendor offers other customers; Section 7.2 states the discount is not offered to customers without an initial 24-month subscription.",
+        "anchorIds": [
+          "sec-7.1",
+          "sec-7.2"
+        ]
+      },
+      {
+        "name": "Custom reports (optional, on request)",
+        "recognition": "Not a present performance obligation; recognize as delivered if ordered",
+        "note": "Optional purchase at $180/hour. Assess whether the hourly rate reflects standalone selling price; if it does, no material right arises.",
+        "anchorIds": [
+          "sec-4.5"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "title": "Extended Care is bundled into the Device price with no standalone selling price and may be a separate service-type warranty",
+        "severity": "high",
+        "topic": "warranties",
+        "affectedTerm": "Section 3.4 Extended Care (24 months beyond the standard warranty, included in the $450 Device price)",
+        "requiredAction": "Conclude whether Extended Care is a service-type warranty and therefore a separate performance obligation, and if so estimate its standalone selling price and reallocate the $18,000 Device consideration between the Devices (point in time) and Extended Care (over 24 months).",
+        "rationale": "ASC 606-10-55-30 through 55-35 require a warranty that provides a service beyond assurance of conformity to specification to be accounted for as a separate performance obligation. Advance replacement within two business days and quarterly firmware tuning visits are affirmative services, not defect assurance. Because the contract says Extended Care is not sold separately, the standalone selling price must be estimated under ASC 606-10-32-33.",
+        "citations": [
+          {
+            "anchorId": "sec-3.4",
+            "quote": "Vendor will provide Extended Care for each Device for a further twenty-four (24) months, including advance replacement within two business days and quarterly firmware tuning visits. Extended Care is included in the Device price and is not sold separately under this Agreement."
+          },
+          {
+            "anchorId": "sec-3.3",
+            "quote": "Vendor warrants that each Device will be free from defects in materials and workmanship for twelve (12) months after delivery."
+          },
+          {
+            "anchorId": "exhibit-a",
+            "quote": "Beacon S2 Device with Extended Care | 40 | $450 each | On shipment"
+          }
+        ]
+      },
+      {
+        "title": "Renewal discount appears to convey a material right requiring allocation of transaction price",
+        "severity": "high",
+        "topic": "material_rights",
+        "affectedTerm": "Section 7.2 renewal price of list less 20%, available only to customers who bought an initial 24-month subscription",
+        "requiredAction": "Determine whether the 20% renewal discount is incremental to discounts offered to similar customers; if so, recognize a material right, estimate its standalone selling price (including likelihood of exercise), and allocate transaction price to it.",
+        "rationale": "ASC 606-10-55-42 provides that an option gives rise to a material right when it grants a discount incremental to the range of discounts typically given to that class of customer in that market. The contract expressly states the discount is withheld from customers without an initial 24-month subscription, which is direct evidence the discount is incremental and was effectively paid for in the initial contract.",
+        "citations": [
+          {
+            "anchorId": "sec-7.2",
+            "quote": "The Subscription Fee for the renewal term will be Vendor's then-current list price less twenty percent (20%). Vendor does not offer this discount to customers who have not purchased an initial twenty-four month subscription."
+          },
+          {
+            "anchorId": "sec-7.1",
+            "quote": "Customer may renew the subscription for one additional twelve (12) month term by giving written notice at least sixty (60) days before the Subscription Term ends."
+          }
+        ]
+      },
+      {
+        "title": "Termination for convenience after month 12 may shorten the enforceable contract term to twelve months",
+        "severity": "high",
+        "topic": "contract_term",
+        "affectedTerm": "Section 8.2 termination for convenience with refund of prepaid Subscription Fees",
+        "requiredAction": "Assess whether the contract contains a substantive termination penalty after month 12. If not, account for a 12-month contract term and treat months 13 to 24 as a customer option, which changes both the allocation base and the material right analysis.",
+        "rationale": "Under ASC 606-10-25-3 and the duration guidance, a contract's term is the period in which enforceable rights and obligations exist. A termination right exercisable without a substantive penalty generally limits the contract term. Here the only non-refundable amounts are the already-delivered Implementation Fees and Devices, which may not constitute a penalty for the remaining subscription period.",
+        "citations": [
+          {
+            "anchorId": "sec-8.2",
+            "quote": "After the first twelve (12) months of the Subscription Term, Customer may terminate this Agreement for convenience on sixty (60) days' written notice. Vendor will refund any prepaid Subscription Fees for the period after termination. Implementation Fees and Device purchases are not refundable."
+          },
+          {
+            "anchorId": "sec-2.2",
+            "quote": "The Subscription Term begins on the Effective Date and continues for twenty-four (24) months."
+          }
+        ]
+      },
+      {
+        "title": "Retroactive volume price reduction creates variable consideration affecting the entire term",
+        "severity": "high",
+        "topic": "variable_consideration",
+        "affectedTerm": "Section 6.2 Volume Pricing — 10% reduction for all Stores for the entire Subscription Term plus a credit on fees already paid",
+        "requiredAction": "Estimate the likelihood Customer exceeds 300 Stores during the term and, if not constrained, reduce the transaction price for the expected retroactive 10% reduction and the associated refund liability from inception.",
+        "rationale": "ASC 606-10-32-6 treats price concessions and volume-based rebates as variable consideration that must be estimated at contract inception, not when triggered. Because the reduction applies retroactively to fees already paid, a refund liability may be required under ASC 606-10-32-10. The estimate is subject to the constraint in ASC 606-10-32-11.",
+        "citations": [
+          {
+            "anchorId": "sec-6.2",
+            "quote": "If Customer operates more than 300 Stores at any time during the Subscription Term, the per-Store fee for all Stores falls by 10% for the entire Subscription Term, and Vendor will credit Customer for the difference on fees already paid."
+          },
+          {
+            "anchorId": "sec-6.1",
+            "quote": "The Subscription Fee is $8,000 per month for up to 300 Stores, invoiced quarterly in advance."
+          }
+        ]
+      },
+      {
+        "title": "Most favored customer clause is variable consideration that must be estimated, not recognized when triggered",
+        "severity": "medium",
+        "topic": "variable_consideration",
+        "affectedTerm": "Section 6.6 Most Favored Customer price-match obligation",
+        "requiredAction": "Estimate the probability and magnitude of a future MFC price reduction and include the effect in the transaction price, applying the constraint; document Vendor's pricing practices supporting the estimate.",
+        "rationale": "An MFC clause is a form of implicit price concession that makes consideration variable under ASC 606-10-32-5 through 32-9. It cannot be ignored simply because no lower price has yet been offered. The estimate should be reassessed each reporting period under ASC 606-10-32-14.",
+        "citations": [
+          {
+            "anchorId": "sec-6.6",
+            "quote": "If during the Subscription Term Vendor offers the Platform to a similarly sized retail customer at a lower per-Store price, Vendor will reduce Customer's Subscription Fee to match for the remainder of the Subscription Term."
+          }
+        ]
+      },
+      {
+        "title": "Marketing development credit is consideration payable to a customer and should reduce the transaction price",
+        "severity": "medium",
+        "topic": "consideration_payable",
+        "affectedTerm": "Section 6.4 one-time $5,000 marketing development credit applied to the first invoice",
+        "requiredAction": "Record the $5,000 as a reduction of the transaction price rather than marketing expense, and determine the period and performance obligations over which the reduction is recognized.",
+        "rationale": "ASC 606-10-32-25 through 32-27 require consideration payable to a customer to reduce the transaction price unless it is in exchange for a distinct good or service whose fair value can be estimated. The clause expressly states no distinct good or service is required in exchange, which removes the exception.",
+        "citations": [
+          {
+            "anchorId": "sec-6.4",
+            "quote": "Vendor will pay Customer a one-time marketing development credit of $5,000, applied against Customer's first invoice, to support Customer's in-store announcement of the Platform. Customer is not required to provide any distinct good or service in exchange."
+          },
+          {
+            "anchorId": "sec-A.2",
+            "quote": "Total fixed fees under this Order Form are $246,000, consisting of $192,000 in Subscription Fees, $18,000 for Devices, and $36,000 for Implementation Services, before the marketing development credit."
+          }
+        ]
+      },
+      {
+        "title": "Late Go-Live credit is a penalty that reduces the transaction price from inception",
+        "severity": "medium",
+        "topic": "variable_consideration",
+        "affectedTerm": "Section 4.4 Late Go-Live Credit of $1,000 per week up to $8,000",
+        "requiredAction": "Estimate the expected credit based on the implementation schedule as of the reporting date and reduce the transaction price accordingly; reassess at each period end. As of today's date the October 31, 2026 deadline has not yet passed, so the estimate is forward-looking.",
+        "rationale": "Penalties contingent on Vendor performance are variable consideration under ASC 606-10-32-6 and must be estimated at inception using an expected value or most likely amount, subject to the constraint. The credit is capped at $8,000, which bounds the estimate.",
+        "citations": [
+          {
+            "anchorId": "sec-4.4",
+            "quote": "If Go-Live has not occurred by October 31, 2026 for reasons within Vendor's control, Vendor will credit Customer $1,000 for each full week of delay, up to a maximum credit of $8,000."
+          },
+          {
+            "anchorId": "sec-4.2",
+            "quote": "The Implementation Services are provided for a fixed fee of $36,000, invoiced fifty percent (50%) on the Agreement Date and fifty percent (50%) at Go-Live."
+          }
+        ]
+      },
+      {
+        "title": "Service level credits are variable consideration, not a contingency recognized when incurred",
+        "severity": "medium",
+        "topic": "variable_consideration",
+        "affectedTerm": "Section 5.2 availability credits of up to 25% of a month's Subscription Fee",
+        "requiredAction": "Estimate expected service credits from historical uptime performance and reduce the Subscription Fee transaction price; do not wait until a credit is claimed.",
+        "rationale": "Credits tied to failing an availability commitment are variable consideration under ASC 606-10-32-6 and reduce the transaction price. ASC 606-10-32-11 constrains the estimate to amounts for which a significant reversal is not probable. The credit is capped at 25% of the monthly fee, which limits the exposure.",
+        "citations": [
+          {
+            "anchorId": "sec-5.2",
+            "quote": "If availability falls below 99.5% in a month, Customer is entitled to a credit of 5% of that month's Subscription Fee for each full 0.5% below the commitment, up to 25% of that month's Subscription Fee."
+          },
+          {
+            "anchorId": "sec-5.1",
+            "quote": "Vendor will make the Platform available 99.5% of each calendar month, excluding scheduled maintenance announced at least 48 hours in advance."
+          }
+        ]
+      },
+      {
+        "title": "Whether Implementation Services are distinct from the Platform subscription is unresolved",
+        "severity": "medium",
+        "topic": "performance_obligations",
+        "affectedTerm": "Section 4.1 Implementation Services (configuration, installation, POS integration, training) for a $36,000 fixed fee",
+        "requiredAction": "Assess under ASC 606-10-25-19 through 25-21 whether the Implementation Services significantly customize or modify the Platform or are merely setup activities a third party could perform; if not distinct, combine them with the subscription and recognize over the Subscription Term.",
+        "rationale": "Setup and integration services are often not distinct in the context of the contract when they are highly interrelated with the hosted software and no other vendor could perform them. If not distinct, the $36,000 cannot be recognized at Go-Live and must be recognized over the subscription period. The contract provides no evidence that these services are sold separately.",
+        "citations": [
+          {
+            "anchorId": "sec-4.1",
+            "quote": "Vendor will configure the Platform, install Devices in up to 40 Stores, integrate the Platform with Customer's point-of-sale system, and train Customer staff (the \"Implementation Services\")."
+          },
+          {
+            "anchorId": "sec-2.1",
+            "quote": "Vendor grants Customer a non-exclusive, non-transferable right to access and use the Platform during the Subscription Term for Customer's internal business purposes."
+          }
+        ]
+      },
+      {
+        "title": "Acceptance clause requires a transfer-of-control judgment despite a deemed-acceptance backstop",
+        "severity": "medium",
+        "topic": "transfer_of_control",
+        "affectedTerm": "Section 4.3 Acceptance and the Go-Live Certificate mechanism",
+        "requiredAction": "Determine whether the acceptance provision is substantive or a formality. If it is substantive, control of the Implementation Services does not transfer until Go-Live occurs or acceptance is deemed, which also gates the second 50% implementation invoice.",
+        "rationale": "ASC 606-10-55-85 through 55-88 state that a customer acceptance clause that objectively verifies agreed specifications may be a formality, but where the vendor cannot objectively determine conformity, control transfers only on acceptance. The ten-business-day deemed-acceptance backstop limits but does not eliminate the judgment.",
+        "citations": [
+          {
+            "anchorId": "sec-4.3",
+            "quote": "Customer will test the Implementation Services and sign a Go-Live Certificate or deliver a written list of material defects within ten (10) business days after Vendor gives notice that the Platform is ready. If Customer does neither, Go-Live is deemed to have occurred."
+          },
+          {
+            "anchorId": "sec-1.4",
+            "quote": "\"Go-Live\" means the date on which Customer signs a Go-Live Certificate confirming that the Platform processes live data from at least 25 Stores."
+          }
+        ]
+      },
+      {
+        "title": "Volume pricing clause references a per-Store fee that the pricing terms do not define",
+        "severity": "medium",
+        "topic": "allocation",
+        "affectedTerm": "Interaction of Section 6.1 (flat $8,000 per month for up to 300 Stores) and Section 6.2 (10% reduction in the per-Store fee)",
+        "requiredAction": "Obtain clarification of how the 10% per-Store reduction is computed when the stated fee is a flat monthly amount rather than a per-Store rate, and how Stores above 300 are priced; this drives both the transaction price estimate and the MFC comparison in Section 6.6.",
+        "rationale": "The transaction price under ASC 606-10-32-2 must be determinable. The contract states a flat monthly fee but the repricing and most-favored-customer mechanics operate on a per-Store price that is never stated, leaving the amount of any reduction unquantifiable from the contract alone.",
+        "citations": [
+          {
+            "anchorId": "sec-6.2",
+            "quote": "the per-Store fee for all Stores falls by 10% for the entire Subscription Term"
+          },
+          {
+            "anchorId": "sec-6.1",
+            "quote": "The Subscription Fee is $8,000 per month for up to 300 Stores, invoiced quarterly in advance."
+          },
+          {
+            "anchorId": "sec-6.6",
+            "quote": "Vendor offers the Platform to a similarly sized retail customer at a lower per-Store price"
+          }
+        ]
+      },
+      {
+        "title": "Usage fees should be evaluated for the variable consideration allocation exception",
+        "severity": "medium",
+        "topic": "variable_consideration",
+        "affectedTerm": "Section 6.3 Usage Fees of $0.02 per 1,000 data events above the 50,000,000 monthly allocation",
+        "requiredAction": "Determine whether usage fees can be allocated entirely to the distinct monthly period in which the usage occurs under ASC 606-10-32-40, or whether they must be estimated and allocated across the subscription performance obligation.",
+        "rationale": "Usage-based fees qualify for the variable consideration allocation exception only if the variable amount relates specifically to the distinct service in that period and allocating it there meets the allocation objective. If the exception applies, usage fees are recognized as incurred; otherwise they must be estimated at inception.",
+        "citations": [
+          {
+            "anchorId": "sec-6.3",
+            "quote": "Data events above the monthly allocation in Section 2.4 are billed monthly in arrears at $0.02 per thousand events."
+          },
+          {
+            "anchorId": "sec-2.4",
+            "quote": "The subscription includes up to 50,000,000 data events per calendar month. Data events above that allocation are billed as Usage Fees under Section 6.3."
+          }
+        ]
+      },
+      {
+        "title": "No standalone selling prices are stated for any performance obligation",
+        "severity": "high",
+        "topic": "allocation",
+        "affectedTerm": "Section A.2 Total Fixed Consideration and the Exhibit A line item prices",
+        "requiredAction": "Develop and document standalone selling prices for the subscription, Devices, Extended Care, Implementation Services, and any material right, using observable prices where available and estimation methods where not, then allocate the transaction price on a relative SSP basis.",
+        "rationale": "ASC 606-10-32-31 through 32-35 require allocation based on relative standalone selling prices, which are not necessarily the contractually stated prices. Exhibit A prices are contract prices, and at least the Device line bundles two potential performance obligations, so the stated amounts cannot be used as SSP without support.",
+        "citations": [
+          {
+            "anchorId": "sec-A.2",
+            "quote": "Total fixed fees under this Order Form are $246,000, consisting of $192,000 in Subscription Fees, $18,000 for Devices, and $36,000 for Implementation Services, before the marketing development credit."
+          },
+          {
+            "anchorId": "exhibit-a",
+            "quote": "Implementation Services | 1 | $36,000 fixed | 50% at signing, 50% at Go-Live"
+          },
+          {
+            "anchorId": "sec-3.4",
+            "quote": "Extended Care is included in the Device price and is not sold separately under this Agreement."
+          }
+        ]
+      },
+      {
+        "title": "Vendor appears to be principal for hosted Platform delivery despite third-party infrastructure",
+        "severity": "low",
+        "topic": "principal_agent",
+        "affectedTerm": "Section 2.3 Hosting on third-party cloud infrastructure",
+        "requiredAction": "Document the principal conclusion. The clause supports gross presentation, but confirm no other clause gives the hosting provider a direct relationship with Customer.",
+        "rationale": "ASC 606-10-55-36 through 55-40 direct the assessment to whether the entity controls the specified service before transfer. Vendor selects the infrastructure, retains full responsibility for availability and security, and is responsible for the acts of its providers, all of which indicate control and gross presentation.",
+        "citations": [
+          {
+            "anchorId": "sec-2.3",
+            "quote": "Vendor hosts the Platform using third-party cloud infrastructure selected by Vendor. Vendor remains fully responsible for availability, security, and the acts of its hosting providers."
+          }
+        ]
+      },
+      {
+        "title": "Sixty-day payment terms with 1% monthly interest — assess for a significant financing component",
+        "severity": "low",
+        "topic": "significant_financing",
+        "affectedTerm": "Section 6.5 payment terms (net 60) and Section 6.1 quarterly advance billing",
+        "requiredAction": "Confirm that net-60 terms and quarterly advance billing do not create a significant financing component; document that the practical expedient in ASC 606-10-32-18 or the ASC 606-10-32-17 exceptions apply.",
+        "rationale": "Net-60 terms are generally short enough that the one-year practical expedient applies, and quarterly advance billing is typically for reasons other than financing. The 1% monthly late interest is a penalty for non-payment rather than a financing arrangement, but the conclusion should be documented.",
+        "citations": [
+          {
+            "anchorId": "sec-6.5",
+            "quote": "Invoices are due sixty (60) days after the invoice date. Late amounts accrue interest at one percent (1%) per month."
+          },
+          {
+            "anchorId": "sec-6.1",
+            "quote": "invoiced quarterly in advance"
+          }
+        ]
+      },
+      {
+        "title": "Collectibility must be assessed and the contract does not address Customer's creditworthiness",
+        "severity": "low",
+        "topic": "contract_existence",
+        "affectedTerm": "Section 6.5 payment terms; Agreement signed by both parties on June 15, 2026",
+        "requiredAction": "Perform and document a collectibility assessment under ASC 606-10-25-1(e) using credit information outside the contract; the contract itself provides no security, deposit, or credit support.",
+        "rationale": "A contract exists under ASC 606 only when it is probable the entity will collect substantially all of the consideration to which it will be entitled. The agreement is signed by authorized officers of both parties with commercial substance, but it contains no deposit, guarantee, or credit terms, and extended net-60 payment terms increase exposure.",
+        "citations": [
+          {
+            "anchorId": "exhibit-a",
+            "quote": "Signed by Priya Raman, Chief Revenue Officer, Northwind Analytics, Inc., on June 15, 2026, and by Marcus Bell, Vice President of Finance, Contoso Retail Group, LLC, on June 15, 2026."
+          },
+          {
+            "anchorId": "sec-6.5",
+            "quote": "Invoices are due sixty (60) days after the invoice date."
+          }
+        ]
+      },
+      {
+        "title": "Custom reports are an optional purchase requiring a material right screen",
+        "severity": "low",
+        "topic": "material_rights",
+        "affectedTerm": "Section 4.5 custom reports at $180 per hour, capped at 200 hours",
+        "requiredAction": "Confirm that $180 per hour approximates the standalone selling price for these services; if it is discounted, a material right may arise. Treat any ordered reports as a separate contract or modification when requested.",
+        "rationale": "Under ASC 606-10-55-42 and 55-43, an option to acquire additional goods at a price reflecting standalone selling price is a marketing offer, not a material right. Nothing in the contract indicates the rate is discounted, so this is likely a low-risk item, but the rate has not been benchmarked.",
+        "citations": [
+          {
+            "anchorId": "sec-4.5",
+            "quote": "Upon Customer's written request, Vendor will develop custom reports at $180 per hour, not to exceed 200 hours without a signed change order."
+          }
+        ]
+      },
+      {
+        "title": "Go-Live is defined at 25 Stores while Implementation Services cover up to 40 Stores",
+        "severity": "low",
+        "topic": "recognition_timing",
+        "affectedTerm": "Section 1.4 Go-Live threshold versus Section 4.1 installation scope",
+        "requiredAction": "Determine whether the Implementation performance obligation is complete at Go-Live or continues until installation at all in-scope Stores, and select a measure of progress consistent with that conclusion.",
+        "rationale": "Go-Live triggers the second 50% implementation invoice but is defined by a 25-Store threshold that is lower than the up-to-40-Store installation scope. Billing milestones do not determine revenue recognition under ASC 606-10-25-27 through 25-31, so a separate measure of progress may be needed.",
+        "citations": [
+          {
+            "anchorId": "sec-1.4",
+            "quote": "confirming that the Platform processes live data from at least 25 Stores"
+          },
+          {
+            "anchorId": "sec-4.1",
+            "quote": "install Devices in up to 40 Stores"
+          },
+          {
+            "anchorId": "sec-4.2",
+            "quote": "fifty percent (50%) at Go-Live"
+          }
+        ]
+      },
+      {
+        "title": "Forecasting module exclusion should be confirmed against any sales representations",
+        "severity": "low",
+        "topic": "performance_obligations",
+        "affectedTerm": "Section A.1 module scope",
+        "requiredAction": "Confirm no side agreement, order form, or sales representation promises the Forecasting module, which would add an unpriced performance obligation.",
+        "rationale": "ASC 606-10-25-16 requires consideration of implied promises that create a valid customer expectation. The entire agreement clause supports reliance on the written terms, but implied promises outside the contract would still need evaluation.",
+        "citations": [
+          {
+            "anchorId": "sec-A.1",
+            "quote": "The subscription includes the Traffic, Conversion, and Staffing modules. The Forecasting module is not included."
+          },
+          {
+            "anchorId": "sec-9.4",
+            "quote": "This Agreement, including its Exhibits, is the entire agreement between the parties on its subject matter."
+          }
+        ]
+      }
+    ],
+    "gaps": [
+      "No standalone selling prices are stated or referenced for the subscription, Devices, Extended Care, or Implementation Services; the contract expressly says Extended Care is not sold separately.",
+      "No historical or expected data on Customer's monthly data event volume, so the magnitude of usage fees above the 50,000,000 allocation cannot be estimated from the contract.",
+      "No information on Customer's current or projected Store count, so the probability of triggering the Section 6.2 retroactive 10% volume reduction cannot be assessed.",
+      "No pricing schedule for Stores above the 300-Store cap, and no definition of the 'per-Store fee' that Sections 6.2 and 6.6 operate on.",
+      "Vendor's then-current list price for the renewal term is not stated, and there is no data on discounts offered to similar customers, so the renewal material right cannot be valued.",
+      "No historical Platform uptime data, so expected service credits under Section 5.2 cannot be estimated.",
+      "The implementation project schedule and current progress toward the October 31, 2026 Go-Live deadline are not provided, so the expected late Go-Live credit cannot be estimated. As of today the deadline has not passed.",
+      "No evidence of Customer's creditworthiness, payment history, or any deposit or credit support bearing on the ASC 606-10-25-1(e) collectibility assessment.",
+      "No information on whether Implementation Services can be performed by third parties or involve significant customization of the Platform, which is needed for the distinctness conclusion.",
+      "No disclosure of sales commissions or other incremental costs of obtaining the contract, or of setup costs incurred, so ASC 340-40 contract cost capitalization and amortization cannot be evaluated.",
+      "Actual shipment dates for the 40 Devices and the actual Go-Live date are not stated, so the point-in-time and milestone recognition dates cannot be fixed.",
+      "No statement of whether any other contracts with Contoso Retail Group exist that would require combination under ASC 606-10-25-9."
+    ]
+  },
+  "usage": {
+    "inputTokens": 11259,
+    "cachedInputTokens": 0,
+    "outputTokens": 13630,
+    "reasoningTokens": 469,
+    "costUsd": 0.43499375
+  }
+}

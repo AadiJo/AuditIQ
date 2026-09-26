@@ -26,8 +26,15 @@ export const setupRoutes = new Hono<AppEnv>()
   })
   .get("/me", requireUser, (c) => {
     const jira = getSetting("jira");
+    const runtime = getSetting("runtime");
     return c.json({
-      user: { id: c.var.user.id, name: c.var.user.name, email: c.var.user.email, role: c.var.user.role },
-      jira: jira.projectKey ? { siteUrl: jira.siteUrl, projectKey: jira.projectKey } : null,
+      user: {
+        id: c.var.user.id,
+        name: c.var.user.name,
+        email: c.var.user.email,
+        role: c.var.user.role as "admin" | "reviewer",
+      },
+      jira: jira.projectKey && jira.issueTypeId ? { siteUrl: jira.siteUrl, projectKey: jira.projectKey } : null,
+      runtime: { default: runtime.default, allowOverride: runtime.allowOverride },
     });
   });

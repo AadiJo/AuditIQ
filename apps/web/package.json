@@ -1,0 +1,32 @@
+{
+  "name": "@auditiq/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@auditiq/server": "workspace:*",
+    "@auditiq/shared": "workspace:*",
+    "@tanstack/react-query": "^5.103.2",
+    "@tanstack/react-router": "^1.170.39",
+    "better-auth": "^1.7.6",
+    "hono": "^4.13.9",
+    "lucide-react": "^1.48.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-resizable-panels": "^4.13.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/router-plugin": "^1.168.40",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.1"
+  }
+}

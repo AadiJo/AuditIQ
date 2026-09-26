@@ -21,7 +21,10 @@ function parse(markdown: string): Block[] {
     const trimmed = line.trim();
     if (!trimmed) continue;
     if (trimmed.startsWith("| ")) {
-      const cells = trimmed.slice(1, -1).split("|").map((cell) => cell.trim());
+      const cells = trimmed
+        .slice(1, -1)
+        .split("|")
+        .map((cell) => cell.trim());
       const last = blocks.at(-1);
       if (last?.kind === "table") last.rows.push(cells);
       else blocks.push({ kind: "table", rows: [cells] });
@@ -38,11 +41,15 @@ function parse(markdown: string): Block[] {
   return blocks;
 }
 
-const escape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const escapeXml = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function unreachable(value: never): never {
+  throw new Error(`Unhandled block: ${JSON.stringify(value)}`);
+}
 
 function run(text: string, options: { bold?: boolean; size?: number } = {}): string {
   const props = `${options.bold ? "<w:b/>" : ""}${options.size ? `<w:sz w:val="${options.size * 2}"/>` : ""}`;
-  return `<w:r>${props ? `<w:rPr>${props}</w:rPr>` : ""}<w:t xml:space="preserve">${escape(text)}</w:t></w:r>`;
+  return `<w:r>${props ? `<w:rPr>${props}</w:rPr>` : ""}<w:t xml:space="preserve">${escapeXml(text)}</w:t></w:r>`;
 }
 
 function paragraph(runs: string, align?: string): string {
@@ -73,6 +80,8 @@ function documentXml(blocks: Block[]): string {
                   .join("")}</w:tr>`,
             )
             .join("")}</w:tbl>`;
+        default:
+          return unreachable(block);
       }
     })
     .join("");
@@ -140,15 +149,17 @@ function html(blocks: Block[]): string {
     .map((block) => {
       switch (block.kind) {
         case "title":
-          return `<h1>${escape(block.text)}</h1>`;
+          return `<h1>${escapeXml(block.text)}</h1>`;
         case "heading":
-          return `<h2>${escape(block.text)}</h2>`;
+          return `<h2>${escapeXml(block.text)}</h2>`;
         case "clause":
-          return `<p><b>${escape(block.lead)}</b> ${escape(block.text)}</p>`;
+          return `<p><b>${escapeXml(block.lead)}</b> ${escapeXml(block.text)}</p>`;
         case "text":
-          return `<p>${escape(block.text)}</p>`;
+          return `<p>${escapeXml(block.text)}</p>`;
         case "table":
-          return `<table>${block.rows.map((row) => `<tr>${row.map((cell) => `<td>${escape(cell)}</td>`).join("")}</tr>`).join("")}</table>`;
+          return `<table>${block.rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeXml(cell)}</td>`).join("")}</tr>`).join("")}</table>`;
+        default:
+          return unreachable(block);
       }
     })
     .join("\n");
@@ -166,7 +177,11 @@ export async function buildFixtures(outDir: string): Promise<{ docx: string; pdf
   try {
     const page = await browser.newPage();
     await page.setContent(html(blocks));
-    await page.pdf({ path: pdfPath, format: "Letter", margin: { top: "1in", bottom: "1in", left: "1in", right: "1in" } });
+    await page.pdf({
+      path: pdfPath,
+      format: "Letter",
+      margin: { top: "1in", bottom: "1in", left: "1in", right: "1in" },
+    });
   } finally {
     await browser.close();
   }

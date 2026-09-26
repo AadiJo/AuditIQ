@@ -1,5 +1,4 @@
 import { randomBytes } from "node:crypto";
-import { zValidator } from "@hono/zod-validator";
 import { and, count, desc, eq, gt, isNull } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
@@ -7,7 +6,7 @@ import { audit } from "../audit.ts";
 import { db } from "../db/client.ts";
 import { invites, session, user } from "../db/schema.ts";
 import { env } from "../env.ts";
-import { type AppEnv, badRequest, requireAdmin, requireUser } from "./context.ts";
+import { type AppEnv, badRequest, requireAdmin, requireUser, validate } from "./context.ts";
 
 const INVITE_DAYS = 14;
 const Role = z.enum(["admin", "reviewer"]);
@@ -34,7 +33,7 @@ export const memberRoutes = new Hono<AppEnv>()
   })
 
   // Invites are links an admin copies and sends. AuditIQ doesn't need a mail server.
-  .post("/invites", zValidator("json", z.object({ email: z.string().email(), role: Role })), (c) => {
+  .post("/invites", validate("json", z.object({ email: z.string().email(), role: Role })), (c) => {
     const { email, role } = c.req.valid("json");
     const normalized = email.toLowerCase();
     if (db.select().from(user).where(eq(user.email, normalized)).get())
@@ -61,7 +60,7 @@ export const memberRoutes = new Hono<AppEnv>()
     return c.json({ ok: true });
   })
 
-  .patch("/:id", zValidator("json", z.object({ role: Role })), (c) => {
+  .patch("/:id", validate("json", z.object({ role: Role })), (c) => {
     const target =
       db
         .select()
