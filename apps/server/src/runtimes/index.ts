@@ -24,21 +24,20 @@ function recording(inner: AgentRuntime, dir: string): AgentRuntime {
     id: inner.id,
     status: () => inner.status(),
     async run(request) {
-      const progress: ReplayFixture["progress"] = [];
-      let last = Date.now();
+      const progress: Array<{ outputChars: number }> = [];
       const result = await inner.run({
         ...request,
         onProgress: (p) => {
-          progress.push({ delayMs: Math.min(Date.now() - last, 400), outputChars: p.outputChars });
-          last = Date.now();
+          progress.push({ outputChars: p.outputChars });
           request.onProgress?.(p);
         },
       });
-      const fixture: ReplayFixture = {
-        progress: progress.filter((_, i) => i % 5 === 0),
-        output: result.output,
-        usage: result.usage,
-      };
+      // Keep 40 evenly spaced progress points, 75ms apart, so a replay takes about three seconds.
+      const points = Array.from({ length: Math.min(40, progress.length) }, (_, i) => {
+        const source = progress[Math.floor(((i + 1) * progress.length) / Math.min(40, progress.length)) - 1];
+        return { delayMs: 75, outputChars: source?.outputChars ?? 0 };
+      });
+      const fixture: ReplayFixture = { progress: points, output: result.output, usage: result.usage };
       await fs.mkdir(dir, { recursive: true });
       await fs.writeFile(path.join(dir, `${request.label}.json`), `${JSON.stringify(fixture, null, 2)}\n`);
       return result;

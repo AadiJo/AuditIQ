@@ -5,6 +5,7 @@ import { z } from "zod";
 import { PriorityIcon } from "../../../components/icons.tsx";
 import { Button, Field, SectionMessage, Select, TextField } from "../../../components/ui.tsx";
 import { api, unwrap } from "../../../lib/api.ts";
+import { hostOf } from "../../../lib/format.ts";
 
 export const Route = createFileRoute("/_app/settings/jira")({
   validateSearch: (search) => z.object({ setup: z.boolean().optional() }).parse(search),
@@ -123,7 +124,7 @@ function JiraSettings() {
       {connected && (
         <div className="mt-3">
           <SectionMessage tone="success">
-            Connected to {settings.data?.siteUrl.replace(/^https:\/\//, "")} as {settings.data?.displayName}.
+            Connected to {hostOf(settings.data?.siteUrl)} as {settings.data?.displayName}.
           </SectionMessage>
         </div>
       )}

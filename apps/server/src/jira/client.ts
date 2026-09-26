@@ -194,8 +194,11 @@ async function errorMessage(response: Response): Promise<string> {
  */
 export async function resolveConnection(siteUrl: string, email: string, token: string) {
   const site = siteUrl.trim().replace(/\/+$/, "");
-  if (!/^https:\/\/[^/]+$/.test(site))
+  // Real sites need https. Plain http is allowed for localhost, which covers the test
+  // suite's fake Jira and local proxies.
+  if (!/^https:\/\/[^/]+$/.test(site) && !/^http:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(site)) {
     throw new JiraError(400, "Enter the site as https://your-company.atlassian.net.");
+  }
   const direct = new JiraClient({ baseUrl: site, email, token });
   try {
     return { baseUrl: site, me: await direct.myself() };

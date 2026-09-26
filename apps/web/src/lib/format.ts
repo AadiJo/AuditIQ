@@ -40,3 +40,13 @@ export function initials(name: string | null | undefined): string {
     .map((part) => part[0]?.toUpperCase())
     .join("");
 }
+
+/** "acme.atlassian.net" from a site URL. */
+export function hostOf(url: string | undefined): string {
+  if (!url) return "";
+  try {
+    return new URL(url).host;
+  } catch {
+    return url;
+  }
+}

@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { RefreshCw } from "lucide-react";
 import { Button, EmptyState, SectionMessage } from "../../components/ui.tsx";
 import { api, unwrap } from "../../lib/api.ts";
-import { formatRelative } from "../../lib/format.ts";
+import { formatRelative, hostOf } from "../../lib/format.ts";
 import { activityQuery, meQuery } from "../../lib/queries.ts";
 
 export const Route = createFileRoute("/_app/jira")({ component: JiraActivityPage });
@@ -56,7 +56,7 @@ function JiraActivityPage() {
       ) : (
         <>
           <div className="mt-2 text-ink-2">
-            {data.projectKey} on {data.siteUrl.replace(/^https:\/\//, "")}. Last checked{" "}
+            {data.projectKey} on {hostOf(data.siteUrl)}. Last checked{" "}
             {data.poll.lastSuccessAt ? formatRelative(data.poll.lastSuccessAt) : "never"}. {modeText[data.watcherMode]}
           </div>
           {data.poll.lastError && (

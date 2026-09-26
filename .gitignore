@@ -10,3 +10,4 @@ e2e/.artifacts/
 evals/reports/
 *:Zone.Identifier
 .DS_Store
+e2e/.shoot.mjs

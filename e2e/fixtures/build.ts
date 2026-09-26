@@ -126,8 +126,11 @@ function zip(files: Array<{ name: string; data: Buffer }>): Buffer {
   return Buffer.concat([...locals, directory, end]);
 }
 
-function docx(blocks: Block[]): Buffer {
+function docx(blocks: Block[], tag?: string): Buffer {
   return zip([
+    // A tag entry changes the file's bytes without changing its text, so tests can upload
+    // the same contract as a separate document.
+    ...(tag ? [{ name: "docProps/auditiq-test.xml", data: Buffer.from(`<tag>${escapeXml(tag)}</tag>`) }] : []),
     {
       name: "[Content_Types].xml",
       data: Buffer.from(
@@ -166,9 +169,18 @@ function html(blocks: Block[]): string {
   return `<!doctype html><html><head><style>body{font:11pt Georgia,serif;margin:0}h1{font-size:15pt;text-align:center}h2{font-size:12pt;margin-top:18pt}p{margin:0 0 8pt}table{border-collapse:collapse;margin:8pt 0}td{border:1px solid #999;padding:3pt 6pt}</style></head><body>${body}</body></html>`;
 }
 
+async function contractBlocks(): Promise<Block[]> {
+  return parse(await fs.readFile(path.join(import.meta.dirname, "northwind-msa.md"), "utf8"));
+}
+
+/** The test contract as DOCX bytes. Different tags give different bytes with identical text. */
+export async function contractDocx(tag?: string): Promise<Buffer> {
+  return docx(await contractBlocks(), tag);
+}
+
 /** Writes northwind-msa.docx and northwind-msa.pdf into `outDir` and returns their paths. */
 export async function buildFixtures(outDir: string): Promise<{ docx: string; pdf: string }> {
-  const blocks = parse(await fs.readFile(path.join(import.meta.dirname, "northwind-msa.md"), "utf8"));
+  const blocks = await contractBlocks();
   await fs.mkdir(outDir, { recursive: true });
   const docxPath = path.join(outDir, "northwind-msa.docx");
   const pdfPath = path.join(outDir, "northwind-msa.pdf");

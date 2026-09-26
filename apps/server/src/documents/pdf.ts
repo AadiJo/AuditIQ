@@ -13,11 +13,15 @@ type TextItem = { str: string; transform: number[]; hasEOL?: boolean };
 export async function readPdf(filePath: string): Promise<RawBlock[]> {
   const pdf = await getDocumentProxy(new Uint8Array(await fs.readFile(filePath)));
   const blocks: RawBlock[] = [];
-  let paragraph: string[] = [];
+  let paragraph = "";
   const flush = () => {
-    const text = paragraph.join(" ").replace(/\s+/g, " ").trim();
+    const text = paragraph.replace(/\s+/g, " ").trim();
     if (text) blocks.push({ type: "p", segments: [{ text }] });
-    paragraph = [];
+    paragraph = "";
+  };
+  // A line ending in a hyphen continues the same word ("Go-" + "Live"), so no space goes between.
+  const append = (line: string) => {
+    paragraph = !paragraph ? line : paragraph.endsWith("-") ? `${paragraph}${line}` : `${paragraph} ${line}`;
   };
 
   for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
@@ -34,7 +38,7 @@ export async function readPdf(filePath: string): Promise<RawBlock[]> {
       if (!text) return;
       const gap = previousY !== null && lineY !== null ? Math.abs(previousY - lineY) : 0;
       if (matchHeading(text, false) || gap > lineHeight * 1.8) flush();
-      paragraph.push(text);
+      append(text);
       previousY = lineY;
     };
 

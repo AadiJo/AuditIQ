@@ -258,7 +258,7 @@ export function ContractView() {
   if (!document) return <PaneEmpty>Loading the contract.</PaneEmpty>;
 
   return (
-    <div ref={scroller} className="min-h-0 grow overflow-auto bg-sunken">
+    <div ref={scroller} data-comments={comments ? "" : undefined} className="min-h-0 grow overflow-auto bg-sunken">
       <div className="flex justify-center gap-5 px-5 py-5">
         <div
           ref={page}

@@ -32,12 +32,15 @@ export const auth = betterAuth({
   appName: "AuditIQ",
   baseURL: env.BASE_URL,
   secret: env.AUDITIQ_SECRET,
-  trustedOrigins: env.isProduction ? [env.BASE_URL] : [env.BASE_URL, "http://localhost:5173", "http://127.0.0.1:5173"],
+  // Production trusts only BASE_URL. Development trusts whatever origin the Vite dev server is reached on.
+  trustedOrigins: env.isProduction ? [env.BASE_URL] : (request) => [env.BASE_URL, request?.headers.get("origin") ?? env.BASE_URL],
   database: drizzleAdapter(db, {
     provider: "sqlite",
     schema: { user: schema.user, session: schema.session, account: schema.account, verification: schema.verification },
   }),
   emailAndPassword: { enabled: true, minPasswordLength: 10 },
+  // Sign-in is rate limited everywhere except the end-to-end suite, which signs in constantly.
+  rateLimit: { enabled: env.NODE_ENV !== "test" },
   user: {
     additionalFields: {
       role: { type: "string", input: false, defaultValue: "reviewer" },

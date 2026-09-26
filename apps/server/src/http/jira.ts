@@ -4,6 +4,7 @@ import { db } from "../db/client.ts";
 import { jiraChanges, outbox, watcherDecisions } from "../db/schema.ts";
 import { poll } from "../jira/poller.ts";
 import { configuredJira } from "../jira/publisher.ts";
+import { postPendingReplies } from "../jira/watcher.ts";
 import { getSetting } from "../settings.ts";
 import { type AppEnv, badRequest, requireAdmin, requireUser } from "./context.ts";
 
@@ -32,5 +33,7 @@ export const jiraRoutes = new Hono<AppEnv>()
   .post("/poll", requireAdmin, async (c) => {
     const running = poll();
     if (!running) badRequest("Connect Jira in Settings first.", 409);
-    return c.json(await running);
+    const result = await running;
+    await postPendingReplies();
+    return c.json(result);
   });

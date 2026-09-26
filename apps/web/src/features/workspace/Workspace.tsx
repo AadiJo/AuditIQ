@@ -400,9 +400,9 @@ export function Workspace() {
           </Button>
         </div>
         {facts(contract).length > 0 && (
-          <div className="mt-0.5 flex gap-7">
+          <div className="mt-0.5 flex min-w-0 gap-7">
             {facts(contract).map(([label, value]) => (
-              <span key={label}>
+              <span key={label} className="min-w-0 max-w-[40%] shrink truncate whitespace-nowrap" title={value}>
                 <span className="mr-1.5 text-ink-2">{label}</span>
                 {value}
               </span>

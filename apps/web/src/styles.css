@@ -65,11 +65,20 @@ body {
   background: var(--color-brand);
 }
 
+/* Cited quotes. Only the selected finding's quotes are highlighted; the rest get a quiet
+   underline so a page with twenty findings stays readable. With margin comments on, every
+   quote is highlighted, the way Word shows commented text. */
 mark.quote {
-  background: var(--color-mark);
-  border-bottom: 2px solid var(--color-mark-line);
+  background: transparent;
+  border-bottom: 1px dashed var(--color-mark-line);
   color: inherit;
 }
-mark.quote[data-active] {
+[data-comments] mark.quote {
+  background: var(--color-mark);
+  border-bottom: 2px solid var(--color-mark-line);
+}
+mark.quote[data-active],
+[data-comments] mark.quote[data-active] {
   background: var(--color-mark-active);
+  border-bottom: 2px solid var(--color-mark-line);
 }

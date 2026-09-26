@@ -8,13 +8,18 @@ import type { VerifiedCitation } from "../db/schema.ts";
 
 export const MIN_QUOTE_CHARS = 16;
 
+// Table cells reach the model joined with " | ", so quotes from tables carry pipes; PDFs
+// have none. Pipes count as whitespace, and a hyphen left dangling by a PDF line break
+// ("Go- Live") rejoins its word.
 export function normalizeForMatch(value: string): string {
   return value
     .normalize("NFKC")
     .replace(/[‘’]/g, "'")
     .replace(/[“”]/g, '"')
     .replace(/[–—]/g, "-")
+    .replace(/\|/g, " ")
     .replace(/\s+/g, " ")
+    .replace(/(\p{L})- (\p{L})/gu, "$1-$2")
     .trim()
     .toLowerCase();
 }
