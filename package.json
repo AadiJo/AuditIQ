@@ -1,0 +1,25 @@
+{
+  "name": "auditiq",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @auditiq/server --filter @auditiq/web dev",
+    "build": "pnpm --filter @auditiq/web build",
+    "start": "pnpm --filter @auditiq/server start",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "e2e": "playwright test",
+    "db:generate": "pnpm --filter @auditiq/server db:generate"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
+    "typescript": "^7.0.2"
+  }
+}
