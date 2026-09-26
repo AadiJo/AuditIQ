@@ -57,10 +57,18 @@ export class JiraClient {
   }
 
   /**
-   * Sends one request. Retries 429 after Retry-After and 5xx with jittered backoff, three
-   * attempts in all, then throws a JiraError carrying Jira's own error text.
+   * Sends one request, three attempts at most. A 429 means Jira did nothing, so every call
+   * retries it after Retry-After. A 5xx can arrive after Jira already wrote, so only reads
+   * (`safe`) retry those; a create or comment fails instead, and the outbox retries it
+   * after checking for the issue first.
    */
-  private async request<T>(method: string, path: string, schema: z.ZodType<T>, body?: unknown): Promise<T> {
+  private async request<T>(
+    method: string,
+    path: string,
+    schema: z.ZodType<T>,
+    body?: unknown,
+    safe = method === "GET",
+  ): Promise<T> {
     const auth = Buffer.from(`${this.connection.email}:${this.connection.token}`).toString("base64");
     for (let attempt = 1; ; attempt++) {
       const response = await fetch(`${this.connection.baseUrl}${path}`, {
@@ -77,7 +85,7 @@ export class JiraClient {
         const text = await response.text();
         return schema.parse(text ? JSON.parse(text) : {});
       }
-      const retryable = response.status === 429 || response.status >= 500;
+      const retryable = response.status === 429 || (safe && response.status >= 500);
       if (retryable && attempt < 3) {
         const retryAfter = Number(response.headers.get("Retry-After"));
         const delay =
@@ -121,7 +129,7 @@ export class JiraClient {
   }
 
   /** Runs a JQL search through every page. `/rest/api/3/search` is retired; this is its replacement. */
-  async search(jql: string, fields: string[], limit = 1000): Promise<Issue[]> {
+  async search(jql: string, fields: string[], limit = Number.POSITIVE_INFINITY): Promise<Issue[]> {
     const issues: Issue[] = [];
     let nextPageToken: string | undefined;
     do {
@@ -130,6 +138,7 @@ export class JiraClient {
         "/rest/api/3/search/jql",
         z.object({ issues: z.array(Issue), nextPageToken: z.string().optional(), isLast: z.boolean().optional() }),
         { jql, fields, maxResults: 100, ...(nextPageToken ? { nextPageToken } : {}) },
+        true,
       );
       issues.push(...page.issues);
       nextPageToken =
@@ -152,13 +161,19 @@ export class JiraClient {
     }
   }
 
+  /** Every comment on an issue, oldest first, across pages. */
   async comments(key: string): Promise<JiraComment[]> {
-    const page = await this.request(
-      "GET",
-      `/rest/api/3/issue/${encodeURIComponent(key)}/comment?maxResults=100&orderBy=created`,
-      z.object({ comments: z.array(Comment) }),
-    );
-    return page.comments;
+    const comments: JiraComment[] = [];
+    for (let startAt = 0; ; ) {
+      const page = await this.request(
+        "GET",
+        `/rest/api/3/issue/${encodeURIComponent(key)}/comment?startAt=${startAt}&maxResults=100&orderBy=created`,
+        z.object({ comments: z.array(Comment), total: z.number().optional() }),
+      );
+      comments.push(...page.comments);
+      startAt += page.comments.length;
+      if (!page.comments.length || startAt >= (page.total ?? startAt)) return comments;
+    }
   }
 
   createIssue(fields: Record<string, unknown>) {

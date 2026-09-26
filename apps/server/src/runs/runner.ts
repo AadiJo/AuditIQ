@@ -17,6 +17,8 @@ import { appendEvent } from "./events.ts";
 // opening the run from another account shows the same progress.
 
 const MAX_CONCURRENT_RUNS = 2;
+/** A run that hasn't finished by now is stuck (a hung model process, a dropped stream). */
+const RUN_TIMEOUT_MS = 30 * 60_000;
 const PROGRESS_INTERVAL_MS = 1000;
 
 /** A problem starting a run that the user can fix, such as a missing prerequisite. */
@@ -66,6 +68,16 @@ export async function startRun(input: {
   const choice = runtimeChoice(input.runtime);
   const status = await choice.runtime.status();
   if (!status.ready) throw new RunError(status.detail);
+
+  // Checking the runtime awaited, so look again: a double click could have started one meanwhile.
+  const started = db
+    .select()
+    .from(runs)
+    .where(
+      and(eq(runs.documentId, document.id), eq(runs.agent, input.agent), inArray(runs.status, ["queued", "running"])),
+    )
+    .get();
+  if (started) return started;
 
   const run = db
     .insert(runs)
@@ -215,7 +227,7 @@ async function execute(runId: string): Promise<void> {
       schema: runtimeSchema(agents[run.agent].output),
       model: run.model,
       effort: run.effort,
-      signal: controller.signal,
+      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(RUN_TIMEOUT_MS)]),
       onProgress: (progress) => {
         outputChars = progress.outputChars;
         if (Date.now() - lastProgressAt < PROGRESS_INTERVAL_MS) return;
@@ -259,8 +271,8 @@ async function execute(runId: string): Promise<void> {
     );
 
     step("save", "active");
-    finish(runId, { status: "succeeded", output, usage: result.usage });
     step("save", "done");
+    finish(runId, { status: "succeeded", output, usage: result.usage });
     audit(
       "run.succeeded",
       { type: "run", id: runId },
@@ -268,7 +280,12 @@ async function execute(runId: string): Promise<void> {
     );
   } catch (error) {
     const cancelled = controller.signal.aborted;
-    const message = error instanceof Error ? error.message : String(error);
+    const timedOut = !cancelled && error instanceof Error && error.message === "The run was cancelled.";
+    const message = timedOut
+      ? `The run didn't finish within ${RUN_TIMEOUT_MS / 60_000} minutes, so AuditIQ stopped it.`
+      : error instanceof Error
+        ? error.message
+        : String(error);
     finish(runId, { status: cancelled ? "cancelled" : "failed", error: cancelled ? "Cancelled." : message });
     if (!cancelled) console.error(`Run ${runId} failed:`, error);
   } finally {

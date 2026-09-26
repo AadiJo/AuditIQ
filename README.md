@@ -124,7 +124,7 @@ The test contract lives in `e2e/fixtures/northwind-msa.md` and is built into DOC
 ## Security
 
 - Uploaded contracts, analyses, and the audit log stay on your server. Jira receives only the finding summary, the required action, and the quoted clauses.
-- Jira tokens and API keys are encrypted at rest with a key derived from `AUDITIQ_SECRET`. The API never returns them; admins see the last four characters.
+- Jira tokens and API keys are encrypted at rest with a key derived from `AUDITIQ_SECRET`. The API never returns them, and the stored Jira token is only ever sent to the site it was entered for. Admins see the last four characters.
 - Contract text and Jira comments are treated as untrusted. Analysis runs have no tools, and watcher replies pass deterministic checks before anything is posted.
 - Every run, publish, Jira write, watcher decision, and settings change is recorded with the person who caused it. **Settings > Audit log** exports it all as JSON.
-- Only the first account or someone with an open invite can sign up. Sign-in is rate limited.
+- Only the first account, or someone holding an invite link, can sign up. Knowing an invited person's email isn't enough. Sign-in is rate limited.

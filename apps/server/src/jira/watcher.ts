@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { anchorLabel, topicLabels } from "@auditiq/shared";
-import { and, count, eq, gte, inArray, lte } from "drizzle-orm";
+import { and, count, eq, gte, inArray, lte, or } from "drizzle-orm";
 import { z } from "zod";
 import { audit } from "../audit.ts";
 import { db } from "../db/client.ts";
@@ -137,6 +137,8 @@ export async function considerComment(
 
   const allowed = new Set(finding.citations.map((c) => c.anchorId));
   const hourAgo = new Date(Date.now() - 3_600_000).toISOString();
+  // Replies already posted this hour count, and so do approved ones still waiting to post,
+  // so several mentions in one poll can't exceed the budget between them.
   const recentWrites =
     db
       .select({ n: count() })
@@ -144,8 +146,10 @@ export async function considerComment(
       .where(
         and(
           eq(watcherDecisions.issueKey, issueKey),
-          eq(watcherDecisions.status, "complete"),
-          gte(watcherDecisions.executedAt, hourAgo),
+          or(
+            and(eq(watcherDecisions.status, "complete"), gte(watcherDecisions.executedAt, hourAgo)),
+            inArray(watcherDecisions.status, ["pending", "processing", "retry"]),
+          ),
         ),
       )
       .get()?.n ?? 0;
@@ -185,19 +189,49 @@ export async function considerComment(
   return record({ changeKey, issueKey, decision, policy: "approved", status: "pending", model: modelName });
 }
 
-/** Posts approved replies. Retries with backoff; the marker check makes a retry after a lost response a no-op. */
-export async function postPendingReplies(): Promise<void> {
+let posting: Promise<void> | null = null;
+
+/**
+ * Posts approved replies. Calls that overlap share one pass, each reply is claimed under a
+ * lease before posting, and the marker check makes a retry after a lost response a no-op.
+ */
+export function postPendingReplies(): Promise<void> {
+  posting ??= postReplies().finally(() => {
+    posting = null;
+  });
+  return posting;
+}
+
+function claimReplies() {
+  return db.transaction((tx) => {
+    const now = new Date().toISOString();
+    const rows = tx
+      .select()
+      .from(watcherDecisions)
+      .where(
+        and(
+          inArray(watcherDecisions.status, ["pending", "retry", "processing"]),
+          lte(watcherDecisions.nextAttemptAt, now),
+        ),
+      )
+      .limit(20)
+      .all();
+    const lease = new Date(Date.now() + 5 * 60_000).toISOString();
+    for (const row of rows) {
+      tx.update(watcherDecisions)
+        .set({ status: "processing", nextAttemptAt: lease })
+        .where(eq(watcherDecisions.id, row.id))
+        .run();
+    }
+    return rows;
+  });
+}
+
+async function postReplies(): Promise<void> {
   const jira = configuredJira();
   if (!jira || getSetting("watcher").mode !== "assist") return;
-  const now = new Date().toISOString();
-  const jobs = db
-    .select()
-    .from(watcherDecisions)
-    .where(and(inArray(watcherDecisions.status, ["pending", "retry"]), lte(watcherDecisions.nextAttemptAt, now)))
-    .limit(20)
-    .all();
 
-  for (const job of jobs) {
+  for (const job of claimReplies()) {
     const decision = Decision.parse(job.decision);
     try {
       const issue = db.select().from(jiraIssues).where(eq(jiraIssues.issueKey, job.issueKey)).get();

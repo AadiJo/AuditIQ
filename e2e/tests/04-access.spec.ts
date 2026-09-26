@@ -15,6 +15,13 @@ test("an invited reviewer joins, sees shared runs, and can't reach settings", as
   expect(invite.ok(), await invite.text()).toBeTruthy();
   const { link } = (await invite.json()) as { link: string };
 
+  // Knowing the invited address isn't enough: sign-up needs the invite link.
+  const guessed = await request.post("/api/auth/sign-up/email", {
+    data: { name: "Guesser", email: REVIEWER.email, password: "a-long-password" },
+    headers: originHeaders,
+  });
+  expect(guessed.status()).toBe(403);
+
   // Sign-up without an invite is refused.
   const stranger = await request.post("/api/auth/sign-up/email", {
     data: { name: "Mallory", email: "mallory@example.com", password: "a-long-password" },

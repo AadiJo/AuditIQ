@@ -95,6 +95,7 @@ export class ClaudeRuntime implements AgentRuntime {
   async run(request: RuntimeRequest): Promise<RuntimeResult> {
     const auth = await this.resolveAuth();
     const env: Record<string, string | undefined> = { ...process.env, CLAUDE_AGENT_SDK_CLIENT_APP: "auditiq/0.1" };
+    for (const key of ["AUDITIQ_SECRET", "OPENAI_API_KEY", "CODEX_API_KEY"]) delete env[key];
     if (auth.mode === "cli") delete env.ANTHROPIC_API_KEY;
     else env.ANTHROPIC_API_KEY = auth.apiKey;
 

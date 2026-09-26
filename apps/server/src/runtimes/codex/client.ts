@@ -17,6 +17,8 @@ export class CodexAppServer {
   private stderr = "";
   private exited = false;
   onNotification: NotificationHandler | null = null;
+  /** Called if the process exits on its own, so a turn in progress fails instead of waiting forever. */
+  onExit: ((error: Error) => void) | null = null;
 
   constructor(binary: string, env: NodeJS.ProcessEnv) {
     this.child = spawn(binary, ["app-server"], { env, stdio: ["pipe", "pipe", "pipe"] });
@@ -28,6 +30,7 @@ export class CodexAppServer {
       const error = new Error(`Codex exited unexpectedly (code ${code}). ${this.lastStderr()}`.trim());
       for (const pending of this.pending.values()) pending.reject(error);
       this.pending.clear();
+      this.onExit?.(error);
     });
     readline
       .createInterface({ input: this.child.stdout, crlfDelay: Number.POSITIVE_INFINITY })
@@ -56,6 +59,7 @@ export class CodexAppServer {
 
   close(): void {
     this.onNotification = null;
+    this.onExit = null;
     if (!this.exited) this.child.kill();
   }
 

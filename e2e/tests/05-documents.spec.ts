@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { buildFixtures } from "../fixtures/build.ts";
+import { buildFixtures, zip } from "../fixtures/build.ts";
 import {
   ensureWorkspace,
   getContract,
@@ -39,6 +39,21 @@ test("unsupported files are refused", async ({ request }) => {
   });
   expect(response.status()).toBe(400);
   expect(((await response.json()) as { error: string }).error).toBe("Upload a contract as a DOCX or PDF file.");
+});
+
+test("a malformed DOCX is refused right away", async ({ request }) => {
+  await ensureWorkspace(request);
+  // An unterminated XML declaration used to send the parser into an endless loop.
+  const hostile = zip([{ name: "word/document.xml", data: Buffer.from("<?a<?") }]);
+  const started = Date.now();
+  const response = await request.post("/api/contracts", {
+    headers: originHeaders,
+    multipart: { file: { name: "hostile.docx", mimeType: "application/octet-stream", buffer: hostile } },
+  });
+  expect(response.status()).toBe(400);
+  expect(((await response.json()) as { error: string }).error).toContain("malformed");
+  expect(Date.now() - started).toBeLessThan(2000);
+  expect((await request.get("/api/setup/state")).ok()).toBeTruthy();
 });
 
 test("a failed run explains itself", async ({ page }) => {

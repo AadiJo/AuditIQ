@@ -73,6 +73,9 @@ async function upsertIssue(
 ): Promise<PublishOutcome> {
   const link = db.select().from(jiraLinks).where(eq(jiraLinks.findingId, finding.id)).get();
   let issue = link ? await client.issue(link.issueKey) : null;
+  // A stored link only counts if the issue still carries this finding's label. Otherwise
+  // the key may now belong to an unrelated issue (a different site, or a relabeled issue).
+  if (issue && findingIdFromLabels(issue.fields.labels ?? []) !== finding.id) issue = null;
   if (!issue) {
     const label = findingLabel(finding.id);
     [issue = null] = await client.search(
@@ -164,11 +167,33 @@ function claim(where: ReturnType<typeof and>, limit: number): Job[] {
   });
 }
 
+// One publisher at a time in this process, so a user's publish and the background retry
+// never work the same job concurrently. Leases cover a process that dies mid-publish.
+let lock: Promise<unknown> = Promise.resolve();
+function exclusively<T>(work: () => Promise<T>): Promise<T> {
+  const next = lock.then(work, work);
+  lock = next.catch(() => undefined);
+  return next;
+}
+
+/** Extends a job's lease right before working on it. Returns false if the claim was lost. */
+function renewLease(job: Job): boolean {
+  const lease = new Date(Date.now() + 5 * 60_000).toISOString();
+  return (
+    db
+      .update(outbox)
+      .set({ nextAttemptAt: lease })
+      .where(and(eq(outbox.id, job.id), eq(outbox.status, "processing")))
+      .run().changes === 1
+  );
+}
+
 async function process(jobs: Job[]) {
   const jira = configuredJira();
   const published: PublishOutcome[] = [];
   const failed: Array<{ findingId: string; error: string }> = [];
   for (const job of jobs) {
+    if (!renewLease(job)) continue;
     const finding = db.select().from(findings).where(eq(findings.id, job.findingId)).get();
     try {
       if (!jira) throw new JiraNotConfiguredError();
@@ -239,6 +264,18 @@ export async function publishFindings(documentId: string, findingIds: string[], 
       .onConflictDoNothing()
       .run();
   }
+  // Publishing is also how people retry: jobs waiting on backoff, or out of attempts, go now.
+  const ids = eligible.map((f) => f.id);
+  if (ids.length) {
+    db.update(outbox)
+      .set({ status: "pending", nextAttemptAt: now })
+      .where(and(inArray(outbox.findingId, ids), eq(outbox.status, "retry")))
+      .run();
+    db.update(outbox)
+      .set({ status: "pending", attempts: 0, nextAttemptAt: now })
+      .where(and(inArray(outbox.findingId, ids), eq(outbox.status, "failed")))
+      .run();
+  }
   audit(
     "jira.publish.requested",
     { type: "document", id: documentId },
@@ -246,9 +283,8 @@ export async function publishFindings(documentId: string, findingIds: string[], 
     actorId,
   );
 
-  const ids = eligible.map((f) => f.id);
   const { published, failed } = ids.length
-    ? await process(claim(inArray(outbox.findingId, ids), ids.length * 2))
+    ? await exclusively(() => process(claim(inArray(outbox.findingId, ids), ids.length * 2)))
     : { published: [], failed: [] };
 
   // A replay has nothing new to write. Report the existing links so the caller sees where each finding lives.
@@ -264,5 +300,5 @@ export async function publishFindings(documentId: string, findingIds: string[], 
 /** Background retry of queued publications. */
 export async function processOutbox(): Promise<void> {
   if (!configuredJira()) return;
-  await process(claim(undefined, 50));
+  await exclusively(() => process(claim(undefined, 50)));
 }

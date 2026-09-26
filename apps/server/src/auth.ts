@@ -8,14 +8,19 @@ import * as schema from "./db/schema.ts";
 import { env } from "./env.ts";
 
 // Email and password sign-in. Nobody can sign up on their own: the first account becomes
-// the owner (an admin), and everyone after needs an open invite for their email address.
+// the owner (an admin), and everyone after needs the invite link an admin sent them. The
+// join page passes the invite id in this header, and it must match the email signing up,
+// so knowing an invited person's address isn't enough.
+export const INVITE_HEADER = "x-auditiq-invite";
 
-function openInvite(email: string) {
+function openInvite(id: string | null | undefined, email: string) {
+  if (!id) return undefined;
   return db
     .select()
     .from(schema.invites)
     .where(
       and(
+        eq(schema.invites.id, id),
         eq(schema.invites.email, email.toLowerCase()),
         isNull(schema.invites.acceptedAt),
         gt(schema.invites.expiresAt, new Date().toISOString()),
@@ -51,9 +56,9 @@ export const auth = betterAuth({
   databaseHooks: {
     user: {
       create: {
-        before: async (user) => {
+        before: async (user, context) => {
           if (!hasUsers()) return { data: { ...user, role: "admin" } };
-          const invite = openInvite(user.email);
+          const invite = openInvite(context?.headers?.get(INVITE_HEADER), user.email);
           if (!invite) {
             throw new APIError("FORBIDDEN", {
               message: "You need an invite to join this AuditIQ workspace. Ask an admin for one.",
@@ -61,8 +66,8 @@ export const auth = betterAuth({
           }
           return { data: { ...user, role: invite.role } };
         },
-        after: async (user) => {
-          const invite = openInvite(user.email);
+        after: async (user, context) => {
+          const invite = openInvite(context?.headers?.get(INVITE_HEADER), user.email);
           if (invite) {
             db.update(schema.invites)
               .set({ acceptedAt: new Date().toISOString() })

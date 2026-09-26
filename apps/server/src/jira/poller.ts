@@ -18,22 +18,12 @@ let polling: Promise<PollResult> | null = null;
 
 export type PollResult = { issues: number; changes: number; decisions: number };
 
-/** JQL wants "yyyy-MM-dd HH:mm" in the searching account's time zone. */
-function jqlTime(iso: string, timeZone: string): string {
-  const parts = Object.fromEntries(
-    new Intl.DateTimeFormat("en-US", {
-      timeZone,
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      hourCycle: "h23",
-    })
-      .formatToParts(new Date(iso))
-      .map((p) => [p.type, p.value]),
-  );
-  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}`;
+/**
+ * A relative JQL window ("-17m") covering everything since `since`. Jira evaluates relative
+ * dates against its own clock, so neither server clocks nor the account's time zone matter.
+ */
+function jqlSince(since: string): string {
+  return `-${Math.ceil((Date.now() - new Date(since).getTime()) / 60_000) + 1}m`;
 }
 
 function snapshotComments(issue: Issue): JiraCommentSnapshot[] {
@@ -46,16 +36,11 @@ function snapshotComments(issue: Issue): JiraCommentSnapshot[] {
   }));
 }
 
-async function pollOnce(
-  client: JiraClient,
-  projectKey: string,
-  accountId: string,
-  timeZone: string,
-): Promise<PollResult> {
+async function pollOnce(client: JiraClient, projectKey: string, accountId: string): Promise<PollResult> {
   const startedAt = new Date().toISOString();
   const state = getSetting("poll");
   const since = state.watermark ? new Date(new Date(state.watermark).getTime() - OVERLAP_MS).toISOString() : null;
-  const jql = `project = "${projectKey}" AND labels = "${MANAGED_LABEL}"${since ? ` AND updated >= "${jqlTime(since, timeZone)}"` : ""} ORDER BY updated ASC`;
+  const jql = `project = "${projectKey}" AND labels = "${MANAGED_LABEL}"${since ? ` AND updated >= "${jqlSince(since)}"` : ""} ORDER BY updated ASC`;
 
   let changes = 0;
   let decisions = 0;
@@ -139,7 +124,7 @@ async function pollOnce(
 export function poll(): Promise<PollResult> | null {
   const jira = configuredJira();
   if (!jira) return null;
-  polling ??= pollOnce(jira.client, jira.settings.projectKey, jira.settings.accountId, jira.settings.timeZone || "UTC")
+  polling ??= pollOnce(jira.client, jira.settings.projectKey, jira.settings.accountId)
     .catch((error: Error) => {
       updateSetting("poll", (current) => ({ ...current, lastError: error.message.slice(0, 1000) }));
       throw error;

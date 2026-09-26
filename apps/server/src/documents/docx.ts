@@ -16,6 +16,7 @@ export type RawBlock =
 /* -------------------------------- ZIP plumbing -------------------------------- */
 
 const ZIP_EOCD_SIG = 0x06054b50;
+const MAX_ENTRY_BYTES = 64 * 1024 * 1024;
 const ZIP_CDH_SIG = 0x02014b50;
 
 function findEocd(buf: Buffer): number {
@@ -35,6 +36,7 @@ function readZipEntry(buf: Buffer, wantName: string): Buffer | null {
     if (buf.readUInt32LE(p) !== ZIP_CDH_SIG) break;
     const method = buf.readUInt16LE(p + 10);
     const compSize = buf.readUInt32LE(p + 20);
+    const size = buf.readUInt32LE(p + 24);
     const nameLen = buf.readUInt16LE(p + 28);
     const extraLen = buf.readUInt16LE(p + 30);
     const commentLen = buf.readUInt16LE(p + 32);
@@ -46,8 +48,10 @@ function readZipEntry(buf: Buffer, wantName: string): Buffer | null {
     const lhNameLen = buf.readUInt16LE(localOffset + 26);
     const lhExtraLen = buf.readUInt16LE(localOffset + 28);
     const dataStart = localOffset + 30 + lhNameLen + lhExtraLen;
+    // Refuse zip bombs: check the declared size, and cap inflation in case it lies.
+    if (size > MAX_ENTRY_BYTES) throw new Error("The DOCX body is too large.");
     const raw = buf.subarray(dataStart, dataStart + compSize);
-    return method === 0 ? Buffer.from(raw) : inflateRawSync(raw);
+    return method === 0 ? Buffer.from(raw) : inflateRawSync(raw, { maxOutputLength: MAX_ENTRY_BYTES });
   }
   return null;
 }
@@ -75,6 +79,13 @@ function decodeEntities(value: string): string {
 // Minimal but correct recursive-descent parser for the well-formed XML that Word emits.
 function parseXml(s: string): XmlNode {
   let i = 0;
+  // Every jump forward goes through this, so a missing terminator throws instead of
+  // sending the cursor back to the start (which would loop forever on hostile input).
+  const after = (needle: string, from: number) => {
+    const at = s.indexOf(needle, from);
+    if (at < 0) throw new Error("The DOCX body is malformed XML.");
+    return at + needle.length;
+  };
   const isNameEnd = (c: string | undefined) =>
     c === " " || c === "\t" || c === "\n" || c === "\r" || c === "/" || c === ">";
 
@@ -84,15 +95,15 @@ function parseXml(s: string): XmlNode {
       if (s[i] === "<") {
         if (s.startsWith("</", i)) return nodes; // closing tag belongs to caller
         if (s.startsWith("<?", i)) {
-          i = s.indexOf("?>", i) + 2;
+          i = after("?>", i);
           continue;
         }
         if (s.startsWith("<!--", i)) {
-          i = s.indexOf("-->", i) + 3;
+          i = after("-->", i);
           continue;
         }
         if (s.startsWith("<!", i)) {
-          i = s.indexOf(">", i) + 1;
+          i = after(">", i);
           continue;
         }
         nodes.push(parseElement());
@@ -131,7 +142,7 @@ function parseXml(s: string): XmlNode {
         while (i < s.length && /\s/.test(s[i] ?? "")) i++;
         const quote = s[i] ?? '"';
         i++;
-        const end = s.indexOf(quote, i);
+        const end = after(quote, i) - 1;
         val = s.slice(i, end);
         i = end + 1;
       }
@@ -144,7 +155,7 @@ function parseXml(s: string): XmlNode {
     }
     i++; // skip '>'
     const children = parseNodes();
-    if (s.startsWith("</", i)) i = s.indexOf(">", i) + 1; // skip closing tag
+    if (s.startsWith("</", i)) i = after(">", i); // skip closing tag
     return { tag, attrs, children };
   }
 

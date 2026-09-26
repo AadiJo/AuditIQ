@@ -2,10 +2,12 @@ import fs from "node:fs/promises";
 import { AgentIdSchema } from "@auditiq/shared";
 import { eq } from "drizzle-orm";
 import { Hono } from "hono";
+import { bodyLimit } from "hono/body-limit";
 import { z } from "zod";
 import { db } from "../db/client.ts";
 import { documents } from "../db/schema.ts";
 import { filePath, storeUpload, UploadError } from "../documents/store.ts";
+import { env } from "../env.ts";
 import { JiraNotConfiguredError, publishFindings } from "../jira/publisher.ts";
 import { RunError, startRun } from "../runs/runner.ts";
 import { type AppEnv, badRequest, requireUser, validate } from "./context.ts";
@@ -23,28 +25,36 @@ export const contractRoutes = new Hono<AppEnv>()
 
   // Upload a contract and start extraction right away. Re-uploading the same file opens the
   // existing contract instead of creating a duplicate.
-  .post("/", async (c) => {
-    const body = await c.req.parseBody();
-    const file = body.file;
-    if (!(file instanceof File)) badRequest("Attach a DOCX or PDF file.");
-    let result: Awaited<ReturnType<typeof storeUpload>>;
-    try {
-      result = await storeUpload(file, c.var.user.id);
-    } catch (error) {
-      if (error instanceof UploadError) badRequest(error.message);
-      throw error;
-    }
-    let runError: string | null = null;
-    if (result.created) {
+  .post(
+    "/",
+    // Stop oversized uploads while they stream in, before they're buffered in memory.
+    bodyLimit({
+      maxSize: (env.MAX_UPLOAD_MB + 1) * 1024 * 1024,
+      onError: (c) => c.json({ error: `Contracts must be under ${env.MAX_UPLOAD_MB} MB.` }, 413),
+    }),
+    async (c) => {
+      const body = await c.req.parseBody();
+      const file = body.file;
+      if (!(file instanceof File)) badRequest("Attach a DOCX or PDF file.");
+      let result: Awaited<ReturnType<typeof storeUpload>>;
       try {
-        await startRun({ documentId: result.document.id, agent: "extraction", userId: c.var.user.id });
+        result = await storeUpload(file, c.var.user.id);
       } catch (error) {
-        if (!(error instanceof RunError)) throw error;
-        runError = error.message;
+        if (error instanceof UploadError) badRequest(error.message);
+        throw error;
       }
-    }
-    return c.json({ id: result.document.id, created: result.created, runError });
-  })
+      let runError: string | null = null;
+      if (result.created) {
+        try {
+          await startRun({ documentId: result.document.id, agent: "extraction", userId: c.var.user.id });
+        } catch (error) {
+          if (!(error instanceof RunError)) throw error;
+          runError = error.message;
+        }
+      }
+      return c.json({ id: result.document.id, created: result.created, runError });
+    },
+  )
 
   .get("/:id", (c) => {
     const document = getDocument(c.req.param("id"));

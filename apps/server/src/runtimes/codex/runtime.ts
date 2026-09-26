@@ -121,10 +121,13 @@ export class CodexRuntime implements AgentRuntime {
     return home;
   }
 
-  private async spawn(home: string): Promise<CodexAppServer> {
+  /** Starts app-server. `providerKey` is the host provider's key variable, the one secret it may see. */
+  private async spawn(home: string, providerKey: string | null = null): Promise<CodexAppServer> {
     const env: NodeJS.ProcessEnv = { ...process.env, CODEX_HOME: home };
-    delete env.OPENAI_API_KEY;
-    delete env.CODEX_API_KEY;
+    // Codex authenticates through CODEX_HOME. Nothing else secret belongs in its environment.
+    for (const key of ["OPENAI_API_KEY", "CODEX_API_KEY", "ANTHROPIC_API_KEY", "AUDITIQ_SECRET"]) {
+      if (key !== providerKey) delete env[key];
+    }
     const server = new CodexAppServer(bundledBinary(), env);
     try {
       await server.initialize();
@@ -144,7 +147,7 @@ export class CodexRuntime implements AgentRuntime {
       );
     }
     if (provider || fs.existsSync(path.join(this.hostHome(), "auth.json"))) {
-      const server = await this.spawn(this.prepareHome("cli"));
+      const server = await this.spawn(this.prepareHome("cli"), provider?.envKey ?? null);
       try {
         const { account, requiresOpenaiAuth } = await server.request("account/read", {});
         if (account || !requiresOpenaiAuth) return { server, auth: "cli", account };
@@ -232,6 +235,7 @@ export class CodexRuntime implements AgentRuntime {
         };
         if (request.signal.aborted) return onAbort();
         request.signal.addEventListener("abort", onAbort, { once: true });
+        server.onExit = reject;
 
         server.onNotification = <M extends keyof Notifications>(method: M, raw: Notifications[M]) => {
           if (method === "item/agentMessage/delta") {

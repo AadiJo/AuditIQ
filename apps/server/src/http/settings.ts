@@ -2,6 +2,8 @@ import { Hono } from "hono";
 import { z } from "zod";
 import { audit } from "../audit.ts";
 import { seal, unseal } from "../crypto.ts";
+import { db } from "../db/client.ts";
+import { jiraIssues, jiraLinks } from "../db/schema.ts";
 import { JiraClient, JiraError, resolveConnection } from "../jira/client.ts";
 import { allRuntimes } from "../runtimes/index.ts";
 import { getSetting, setSetting, updateSetting } from "../settings.ts";
@@ -59,19 +61,30 @@ export const settingsRoutes = new Hono<AppEnv>()
     async (c) => {
       const body = c.req.valid("json");
       const current = getSetting("jira");
+      const siteUrl = body.siteUrl.trim().replace(/\/+$/, "");
+      const siteChanged = siteUrl !== current.siteUrl;
+      // The stored token is only ever sent back to the site and account it was entered for,
+      // so it can't be redirected to another server by editing the URL.
+      if (!body.apiToken && (siteChanged || body.email !== current.email)) {
+        badRequest("Enter the API token again when you change the site or email.");
+      }
       const token = body.apiToken ?? (current.apiToken ? unseal(current.apiToken) : null);
       if (!token) badRequest("Enter an API token.");
-      const { baseUrl, me } = await jiraCall(() => resolveConnection(body.siteUrl, body.email, token));
-      const siteChanged = body.siteUrl.replace(/\/+$/, "") !== current.siteUrl;
+      const { baseUrl, me } = await jiraCall(() => resolveConnection(siteUrl, body.email, token));
+      if (siteChanged) {
+        // Issue keys from the old site mean nothing on the new one.
+        db.delete(jiraLinks).run();
+        db.delete(jiraIssues).run();
+        updateSetting("poll", (poll) => ({ ...poll, watermark: null }));
+      }
       setSetting("jira", {
         ...current,
-        siteUrl: body.siteUrl.replace(/\/+$/, ""),
+        siteUrl,
         email: body.email,
         apiToken: body.apiToken ? seal(body.apiToken) : current.apiToken,
         apiBaseUrl: baseUrl,
         accountId: me.accountId,
         displayName: me.displayName,
-        timeZone: me.timeZone ?? "UTC",
         ...(siteChanged
           ? {
               projectKey: "",

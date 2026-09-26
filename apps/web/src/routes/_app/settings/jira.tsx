@@ -31,6 +31,11 @@ function JiraSettings() {
     setEmail(settings.data.email);
   }, [settings.data]);
 
+  // The stored token only works with the site and email it was entered for.
+  const credentialsChanged =
+    Boolean(settings.data?.tokenHint) &&
+    (siteUrl.replace(/\/+$/, "") !== settings.data?.siteUrl || email !== settings.data?.email);
+
   const connect = useMutation({
     mutationFn: () =>
       unwrap(api.settings.jira.connection.$put({ json: { siteUrl, email, ...(token ? { apiToken: token } : {}) } })),
@@ -164,7 +169,10 @@ function JiraSettings() {
               >
                 id.atlassian.com
               </a>
-              .{settings.data?.tokenHint ? ` Leave blank to keep the token ending in ${settings.data.tokenHint}.` : ""}
+              .
+              {settings.data?.tokenHint && !credentialsChanged
+                ? ` Leave blank to keep the token ending in ${settings.data.tokenHint}.`
+                : ""}
             </>
           }
         >
@@ -173,7 +181,7 @@ function JiraSettings() {
             value={token}
             onChange={(e) => setToken(e.target.value)}
             autoComplete="off"
-            required={!settings.data?.tokenHint}
+            required={!settings.data?.tokenHint || credentialsChanged}
           />
         </Field>
         {connect.error && (

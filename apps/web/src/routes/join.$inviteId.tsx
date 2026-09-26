@@ -26,7 +26,13 @@ function JoinPage() {
   async function submit(event: FormEvent) {
     event.preventDefault();
     setBusy(true);
-    const result = await authClient.signUp.email({ name, email, password });
+    // The invite id proves this person got the link; sign-up is refused without it.
+    const result = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      fetchOptions: { headers: { "x-auditiq-invite": inviteId } },
+    });
     setBusy(false);
     if (result.error) return setError(result.error.message ?? "That didn't work.");
     await queryClient.invalidateQueries();

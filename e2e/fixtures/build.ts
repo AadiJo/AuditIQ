@@ -89,7 +89,7 @@ function documentXml(blocks: Block[]): string {
 }
 
 /** A store-only ZIP archive. Enough for a DOCX; Word and AuditIQ both read uncompressed entries. */
-function zip(files: Array<{ name: string; data: Buffer }>): Buffer {
+export function zip(files: Array<{ name: string; data: Buffer }>): Buffer {
   const locals: Buffer[] = [];
   const centrals: Buffer[] = [];
   let offset = 0;

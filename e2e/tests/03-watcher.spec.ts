@@ -108,6 +108,25 @@ test("an injection attempt is refused without a model call", async ({ request },
   await attachJiraState(testInfo);
 });
 
+test("overlapping polls post a reply once", async ({ request }) => {
+  await ensureWorkspace(request);
+  const before = (await serviceReplies()).length;
+  await jiraControl("comment", { key: issueKey, text: "@AuditIQ which section sets this out?" });
+  const responses = await Promise.all([1, 2, 3].map(() => request.post("/api/jira/poll", { headers: originHeaders })));
+  for (const response of responses) expect(response.ok()).toBeTruthy();
+  expect(await serviceReplies()).toHaveLength(before + 1);
+});
+
+test("several mentions in one poll stay within the hourly budget", async ({ request }) => {
+  await ensureWorkspace(request);
+  for (const n of [1, 2, 3]) await jiraControl("comment", { key: issueKey, text: `@AuditIQ question ${n}?` });
+  await poll(request);
+  // Two replies went out earlier this hour; the budget is three.
+  expect(await serviceReplies()).toHaveLength(3);
+  const activity = (await (await request.get("/api/jira/activity")).json()) as { decisions: Array<{ policy: string }> };
+  expect(activity.decisions.filter((d) => d.policy.includes("budget")).length).toBe(2);
+});
+
 test("status changes in Jira show up on the finding", async ({ page }) => {
   await ensureWorkspace(page.request);
   await jiraControl("transition", {
@@ -122,5 +141,5 @@ test("status changes in Jira show up on the finding", async ({ page }) => {
   await expect(row.getByText("In Progress")).toBeVisible();
   await row.click();
   await expect(page.getByText("Dana Kim").first()).toBeVisible();
-  await expect(page.getByText("does this need a pricing comparison?")).toBeVisible();
+  await expect(page.getByText("@AuditIQ question 3?")).toBeVisible();
 });

@@ -43,9 +43,11 @@ Every step is appended to `run_events`. The SSE route (`http/runs.ts`) replays s
 
 A finding's identity is a hash of three things: the document's hash, the ASC 606 topic, and the primary clause, meaning the first quote, which the prompt asks agents to make the clause that raises the issue. Rewording, extra supporting quotes, reruns, and the same issue from both agents all land on one row, with one observation per run.
 
-**Publishing** (`jira/publisher.ts`). Publishing queues one outbox row per finding per run. The dedupe key is unique, so replays add nothing. Each job looks for the finding's existing issue, first through the stored link and then by its `auditiq-fnd-<id>` label, before creating one. A later run's job adds a comment to the existing issue instead. Failures retry with backoff up to five times, and claims are leased so a crashed worker's jobs free up.
+**Publishing** (`jira/publisher.ts`). Publishing queues one outbox row per finding per run. The dedupe key is unique, so replays add nothing. Each job looks for the finding's existing issue before creating one: first through the stored link, as long as that issue still carries the finding's label, then by the `auditiq-fnd-<id>` label. A later run's job adds a comment to the existing issue instead.
 
-**Sync** (`jira/poller.ts`, `jira/service.ts`). A timer searches the project for `labels = "auditiq"` issues updated since a watermark, minus five minutes of overlap. It stores a snapshot of each issue, including comments, and records every issue update and comment once, keyed by Jira id. A six-hourly reconcile marks links whose issue vanished or lost its labels.
+Jobs run one at a time per process under a lease that's renewed per job. Failures back off and retry up to five times, and publishing again retries a finding right away, including one that ran out of attempts. The Jira client (`jira/client.ts`) retries a 429 after `Retry-After`. It retries a 5xx only for reads, because a create or comment can fail after Jira has already written it. The outbox's label lookup is what makes those retries safe.
+
+**Sync** (`jira/poller.ts`, `jira/service.ts`). A timer searches the project for `labels = "auditiq"` issues updated since a watermark, minus five minutes of overlap. The window is written as relative JQL (`updated >= "-17m"`), so neither clocks nor time zones matter. It stores a snapshot of each issue, including comments, and records every issue update and comment once, keyed by Jira id. A six-hourly reconcile marks links whose issue vanished or lost its labels.
 
 **Watcher** (`jira/watcher.ts`). A new comment that mentions `@AuditIQ` on a managed issue goes through fixed gates in order:
 
@@ -53,7 +55,7 @@ A finding's identity is a hash of three things: the document's hash, the ASC 606
 2. It's rejected on prompt-injection patterns.
 3. It's rejected if the issue has no verified finding.
 
-After that, the model proposes a reply, and the policy checks that it cites only the finding's verified clauses, is short, is confident enough, and fits the hourly budget. Shadow mode records the decision. Assist mode posts it with a marker, so a retry after a lost response is a no-op.
+After that, the model proposes a reply, and the policy checks that it cites only the finding's verified clauses, is short, is confident enough, and fits the hourly budget. The budget counts replies still waiting to post as well as sent ones. Shadow mode records the decision. Assist mode claims each approved reply under a lease and posts it with a marker, so overlapping polls post once and a retry after a lost response is a no-op.
 
 ## Data
 

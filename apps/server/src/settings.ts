@@ -20,8 +20,6 @@ const schemas = {
     apiBaseUrl: z.string().default(""),
     accountId: z.string().default(""),
     displayName: z.string().default(""),
-    /** The service account's Jira time zone. JQL date filters are read in it. */
-    timeZone: z.string().default("UTC"),
     projectKey: z.string().default(""),
     projectName: z.string().default(""),
     issueTypeId: z.string().default(""),
