@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@auditiq/shared':
+        specifier: workspace:*
+        version: link:packages/shared
       '@biomejs/biome':
         specifier: ^2.5.14
         version: 2.5.14

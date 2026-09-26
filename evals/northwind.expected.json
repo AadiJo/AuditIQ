@@ -1,0 +1,20 @@
+{
+  "contract": "e2e/fixtures/northwind-msa.md",
+  "notes": "Issues deliberately written into the Northwind test contract. A finding matches an issue when its topic is one of the issue's topics and it cites at least one of the issue's clauses.",
+  "issues": [
+    { "id": "renewal-material-right", "topics": ["material_rights"], "clauses": ["sec-7.2", "sec-7.1"] },
+    { "id": "marketing-credit-payable-to-customer", "topics": ["consideration_payable"], "clauses": ["sec-6.4"] },
+    { "id": "extended-care-service-warranty", "topics": ["warranties", "performance_obligations"], "clauses": ["sec-3.4"] },
+    { "id": "retrospective-volume-discount", "topics": ["variable_consideration"], "clauses": ["sec-6.2"] },
+    { "id": "late-go-live-credit", "topics": ["variable_consideration"], "clauses": ["sec-4.4"] },
+    { "id": "sla-service-credits", "topics": ["variable_consideration"], "clauses": ["sec-5.2"] },
+    { "id": "usage-fees", "topics": ["variable_consideration", "recognition_timing"], "clauses": ["sec-6.3", "sec-2.4"] },
+    { "id": "most-favored-customer", "topics": ["variable_consideration"], "clauses": ["sec-6.6"] },
+    { "id": "termination-shortens-term", "topics": ["contract_term"], "clauses": ["sec-8.2"] },
+    { "id": "deemed-acceptance", "topics": ["transfer_of_control"], "clauses": ["sec-4.3"] },
+    { "id": "devices-point-in-time", "topics": ["recognition_timing", "transfer_of_control", "performance_obligations"], "clauses": ["sec-3.2", "sec-3.1"] },
+    { "id": "implementation-distinct", "topics": ["performance_obligations"], "clauses": ["sec-4.1", "sec-4.2"] },
+    { "id": "hosting-principal", "topics": ["principal_agent"], "clauses": ["sec-2.3"] },
+    { "id": "no-standalone-selling-prices", "topics": ["allocation"], "clauses": ["sec-A.2", "exhibit-a"] }
+  ]
+}

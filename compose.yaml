@@ -1,0 +1,19 @@
+# docker compose up -d, then open http://localhost:5180 and create the owner account.
+services:
+  auditiq:
+    build: .
+    image: auditiq:latest
+    ports:
+      - "5180:5180"
+    environment:
+      # The address people use to reach AuditIQ. Invite links and sign-in cookies use it.
+      BASE_URL: ${BASE_URL:-http://localhost:5180}
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - auditiq-data:/data
+    restart: unless-stopped
+
+volumes:
+  auditiq-data:

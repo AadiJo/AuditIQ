@@ -10,13 +10,17 @@
     "dev": "pnpm --parallel --filter @auditiq/server --filter @auditiq/web dev",
     "build": "pnpm --filter @auditiq/web build",
     "start": "pnpm --filter @auditiq/server start",
-    "typecheck": "pnpm -r typecheck",
+    "backup": "pnpm --filter @auditiq/server backup",
+    "typecheck": "pnpm -r typecheck && tsc -p e2e && tsc -p evals",
     "lint": "biome check .",
     "format": "biome check --write .",
     "e2e": "playwright test",
-    "db:generate": "pnpm --filter @auditiq/server db:generate"
+    "eval": "node evals/run.ts",
+    "db:generate": "pnpm --filter @auditiq/server db:generate",
+    "cli-login": "pnpm --filter @auditiq/server cli-login"
   },
   "devDependencies": {
+    "@auditiq/shared": "workspace:*",
     "@biomejs/biome": "^2.5.14",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
