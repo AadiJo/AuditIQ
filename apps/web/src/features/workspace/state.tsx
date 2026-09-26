@@ -39,7 +39,7 @@ type WorkspaceValue = {
   contract: ContractDetail;
   document: DocumentModel | undefined;
   step: AgentId;
-  /** Findings the current step raised. */
+  /** Findings the current step's latest successful run raised. */
   findings: Finding[];
   selectedFinding: Finding | null;
   focusedClause: string | null;
@@ -73,7 +73,12 @@ export function WorkspaceProvider({
   children: ReactNode;
 }) {
   const navigate = useNavigate();
-  const findings = useMemo(() => contract.findings.filter((f) => f.raisedBy.includes(step)), [contract.findings, step]);
+  // A step shows what its latest successful run raised, so a rerun that drops an issue drops it here too.
+  const latestRunId = contract.runs[step].outputRunId;
+  const findings = useMemo(
+    () => contract.findings.filter((f) => latestRunId !== null && f.observedIn.includes(latestRunId)),
+    [contract.findings, latestRunId],
+  );
   const selectedFinding = contract.findings.find((f) => f.id === search.finding) ?? null;
 
   // Unpublished, verified findings start out checked, since that's what "Publish" usually means.

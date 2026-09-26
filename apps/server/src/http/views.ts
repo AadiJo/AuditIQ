@@ -93,6 +93,8 @@ export function findingViews(where: { documentId?: string; ids?: string[] } = {}
     eligible: finding.eligible,
     blockedReasons: finding.blockedReasons,
     raisedBy: [...new Set(observations.filter((o) => o.findingId === finding.id).map((o) => o.agent))],
+    /** Runs that raised this finding. The workspace shows a step's findings from its latest run only. */
+    observedIn: observations.filter((o) => o.findingId === finding.id).map((o) => o.runId),
     firstSeenAt: finding.firstSeenAt,
     lastSeenAt: finding.lastSeenAt,
     jira: link

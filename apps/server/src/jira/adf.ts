@@ -61,9 +61,7 @@ export function watcherReply(input: { reply: string; clauses: string[]; marker: 
       .filter(Boolean)
       .map((line) => paragraph(text(line))),
     paragraph(
-      text(`Based on ${input.clauses.map(clauseName).join(", ")}. A person decides the outcome.`, [
-        { type: "em" },
-      ]),
+      text(`Based on ${input.clauses.map(clauseName).join(", ")}. A person decides the outcome.`, [{ type: "em" }]),
     ),
     paragraph(text(`AuditIQ reply ${input.marker}`, [{ type: "code" }])),
   ]);

@@ -200,10 +200,14 @@ export function ContractView() {
   const cardRefs = useRef(new Map<string, HTMLDivElement>());
   const [positions, setPositions] = useState<Record<string, number>>({});
 
-  // Highlights come from every finding on the contract, not just this step's.
+  // Highlights cover the latest run of every step, not just this one, so the page shows
+  // everything the current analysis cites.
   const highlightsByAnchor = useMemo(() => {
+    const latest = Object.values(contract.runs)
+      .map((run) => run.outputRunId)
+      .filter((id): id is string => id !== null);
     const map = new Map<string, Highlight[]>();
-    for (const finding of contract.findings) {
+    for (const finding of contract.findings.filter((f) => f.observedIn.some((id) => latest.includes(id)))) {
       for (const citation of finding.citations) {
         const list = map.get(citation.anchorId) ?? [];
         list.push({ quote: citation.quote, findingId: finding.id });
@@ -211,7 +215,7 @@ export function ContractView() {
       }
     }
     return map;
-  }, [contract.findings]);
+  }, [contract.findings, contract.runs]);
 
   const groups = useMemo(() => (document ? clauseGroups(document) : []), [document]);
   const marginFindings = useMemo(() => findings.filter((f) => f.citations.length > 0), [findings]);
