@@ -41,27 +41,50 @@ function score(findings: FindingDraft[]) {
   });
   return {
     findings: findings.length,
-    citationValidity: checked.filter((c) => c.verified.errors.length === 0 && c.finding.citations.length > 0).length / Math.max(1, findings.length),
+    citationValidity:
+      checked.filter((c) => c.verified.errors.length === 0 && c.finding.citations.length > 0).length /
+      Math.max(1, findings.length),
     recall: matched.filter((m) => m.matched).length / expected.issues.length,
     missed: matched.filter((m) => !m.matched).map((m) => m.issue),
     matched,
   };
 }
 
-type Outcome = { runtime: string; agent: AgentId; ok: boolean; error?: string; usage?: unknown; seconds?: number; score?: ReturnType<typeof score> };
+type Outcome = {
+  runtime: string;
+  agent: AgentId;
+  ok: boolean;
+  error?: string;
+  usage?: unknown;
+  seconds?: number;
+  score?: ReturnType<typeof score>;
+};
 const outcomes: Outcome[] = [];
 
-async function runAgents(label: string, run: (agent: AgentId, prompt: string) => Promise<{ output: unknown; usage: unknown }>) {
+async function runAgents(
+  label: string,
+  run: (agent: AgentId, prompt: string) => Promise<{ output: unknown; usage: unknown }>,
+) {
   let extraction: ExtractionOutput | null = null;
   for (const agent of ["extraction", "accounting"] as const) {
     const started = Date.now();
     try {
       if (agent === "accounting" && !extraction) throw new Error("Skipped: extraction failed.");
-      const prompt = agent === "extraction" ? extractionPrompt("northwind.docx", model) : accountingPrompt("northwind.docx", model, extraction as ExtractionOutput);
+      const prompt =
+        agent === "extraction"
+          ? extractionPrompt("northwind.docx", model)
+          : accountingPrompt("northwind.docx", model, extraction as ExtractionOutput);
       const result = await run(agent, prompt);
       const output = agents[agent].output.parse(result.output);
       if (agent === "extraction") extraction = output as ExtractionOutput;
-      outcomes.push({ runtime: label, agent, ok: true, usage: result.usage, seconds: (Date.now() - started) / 1000, score: score(output.findings) });
+      outcomes.push({
+        runtime: label,
+        agent,
+        ok: true,
+        usage: result.usage,
+        seconds: (Date.now() - started) / 1000,
+        score: score(output.findings),
+      });
     } catch (error) {
       outcomes.push({ runtime: label, agent, ok: false, error: (error as Error).message.slice(0, 500) });
     }
@@ -69,13 +92,21 @@ async function runAgents(label: string, run: (agent: AgentId, prompt: string) =>
 }
 
 if (replay) {
-  await runAgents("replay", async (agent) => JSON.parse(await fs.readFile(path.join(root, `e2e/fixtures/replay/${agent}.json`), "utf8")));
+  await runAgents("replay", async (agent) =>
+    JSON.parse(await fs.readFile(path.join(root, `e2e/fixtures/replay/${agent}.json`), "utf8")),
+  );
 } else {
   const { ClaudeRuntime } = await import("../apps/server/src/runtimes/claude.ts");
   const { CodexRuntime } = await import("../apps/server/src/runtimes/codex/runtime.ts");
   const runtimes = [
-    { runtime: new ClaudeRuntime(() => process.env.ANTHROPIC_API_KEY ?? null), model: process.env.EVAL_CLAUDE_MODEL ?? "claude-opus-5" },
-    { runtime: new CodexRuntime(() => process.env.OPENAI_API_KEY ?? null), model: process.env.EVAL_CODEX_MODEL ?? "gpt-5.5" },
+    {
+      runtime: new ClaudeRuntime(() => process.env.ANTHROPIC_API_KEY ?? null),
+      model: process.env.EVAL_CLAUDE_MODEL ?? "claude-opus-5",
+    },
+    {
+      runtime: new CodexRuntime(() => process.env.OPENAI_API_KEY ?? null),
+      model: process.env.EVAL_CODEX_MODEL ?? "gpt-5.5",
+    },
   ];
   for (const { runtime, model: modelName } of runtimes) {
     const status = await runtime.status();
@@ -84,7 +115,15 @@ if (replay) {
       continue;
     }
     await runAgents(`${runtime.id}:${modelName}`, (agent, prompt) =>
-      runtime.run({ label: agent, system: systemPrompt, prompt, schema: runtimeSchema(agents[agent].output), model: modelName, effort: "medium", signal: AbortSignal.timeout(900_000) }),
+      runtime.run({
+        label: agent,
+        system: systemPrompt,
+        prompt,
+        schema: runtimeSchema(agents[agent].output),
+        model: modelName,
+        effort: "medium",
+        signal: AbortSignal.timeout(900_000),
+      }),
     );
   }
 }
@@ -92,7 +131,10 @@ if (replay) {
 const stamp = new Date().toISOString().replace(/[:.]/g, "-");
 const reportDir = path.join(root, "evals/reports");
 await fs.mkdir(reportDir, { recursive: true });
-await fs.writeFile(path.join(reportDir, `${stamp}.json`), `${JSON.stringify({ createdAt: new Date().toISOString(), replay, outcomes }, null, 2)}\n`);
+await fs.writeFile(
+  path.join(reportDir, `${stamp}.json`),
+  `${JSON.stringify({ createdAt: new Date().toISOString(), replay, outcomes }, null, 2)}\n`,
+);
 const lines = [
   `# AuditIQ eval, ${new Date().toISOString()}`,
   "",
