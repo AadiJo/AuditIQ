@@ -63,7 +63,7 @@ test("uploading a contract runs extraction and shows verified findings", async (
   contractId = page.url().split("/contracts/")[1]?.split("?")[0] ?? "";
 
   // Progress streams from the server while the run replays.
-  await expect(page.getByText(/Extraction is (queued|running)/)).toBeVisible();
+  await expect(page.getByText(/Extraction \(AGT-001\) is (queued|running)/)).toBeVisible();
   await expect(page.getByText("Extracting terms and findings")).toBeVisible();
   await expect(page.getByText(/19 findings, 0 in Jira, 1 held back/)).toBeVisible({ timeout: 30_000 });
   await expect(page.getByRole("heading", { name: "NW-2026-0187" })).toBeVisible();
@@ -79,7 +79,7 @@ test("uploading a contract runs extraction and shows verified findings", async (
 test("the accounting review merges repeated issues into existing findings", async ({ page }) => {
   await page.request.post("/api/auth/sign-in/email", { data: OWNER, headers: originHeaders });
   await page.goto(`/contracts/${contractId}`);
-  await page.getByRole("button", { name: "Accounting review", exact: true }).click();
+  await page.getByRole("button", { name: "AGT-002 Accounting review", exact: true }).click();
   await page.getByRole("button", { name: "Run accounting review" }).click();
   await expect(page.getByText("Drafting accounting conclusions")).toBeVisible();
   await waitForRun(page.request, contractId, "accounting");

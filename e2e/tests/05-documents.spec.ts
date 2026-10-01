@@ -65,7 +65,7 @@ test("a failed run explains itself", async ({ page }) => {
     const id = await uploadContract(page.request, "failing");
     expect((await waitForRun(page.request, id, "extraction")).status).toBe("failed");
     await page.goto(`/contracts/${id}`);
-    await expect(page.getByText("Extraction failed")).toBeVisible();
+    await expect(page.getByText("Extraction (AGT-001) failed")).toBeVisible();
     await expect(page.getByText(/didn't match the expected format/)).toBeVisible();
     await page.goto("/contracts");
     await expect(

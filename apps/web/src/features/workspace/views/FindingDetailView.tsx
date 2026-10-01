@@ -1,4 +1,4 @@
-import { agents, topicLabels } from "@auditiq/shared";
+import { topicLabels } from "@auditiq/shared";
 import { useQuery } from "@tanstack/react-query";
 import { ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
@@ -7,7 +7,7 @@ import { Avatar, Lozenge } from "../../../components/ui.tsx";
 import type { Finding } from "../../../lib/api.ts";
 import { formatRelative } from "../../../lib/format.ts";
 import { findingQuery, meQuery } from "../../../lib/queries.ts";
-import { FindingBody, jiraUrl, PaneEmpty } from "../parts.tsx";
+import { agentName, FindingBody, jiraUrl, PaneEmpty } from "../parts.tsx";
 import { useWorkspace } from "../state.tsx";
 
 /** The selected finding in the workspace. */
@@ -69,7 +69,7 @@ export function FindingDetail({ finding, header }: { finding: Finding; header?: 
         <dt className="text-ink-2">Contract term</dt>
         <dd>{finding.affectedTerm}</dd>
         <dt className="text-ink-2">Raised by</dt>
-        <dd>{finding.raisedBy.map((agent) => agents[agent].label).join(" and ")}</dd>
+        <dd>{finding.raisedBy.map(agentName).join(" and ")}</dd>
       </dl>
       <div className="mt-5">
         <FindingBody finding={finding} />

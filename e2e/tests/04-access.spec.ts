@@ -44,7 +44,7 @@ test("an invited reviewer joins, sees shared runs, and can't reach settings", as
   await waitForRun(request, id, "extraction");
   await startRun(request, id, "accounting");
   await page.goto(`/contracts/${id}?step=accounting`);
-  await expect(page.getByText(/Accounting review is (queued|running)/)).toBeVisible();
+  await expect(page.getByText(/Accounting review \(AGT-002\) is (queued|running)/)).toBeVisible();
   await expect(page.getByText(/findings, \d+ in Jira/)).toBeVisible({ timeout: 30_000 });
 
   expect((await page.request.get("/api/settings/jira")).status()).toBe(403);

@@ -9,8 +9,8 @@ It runs on your own server. Analyses go through Claude or Codex, using the CLI l
 ## What it does
 
 1. **Upload** a contract (DOCX, or PDF with a text layer). AuditIQ numbers every clause (sections, articles, exhibits) so it can check citations later.
-2. **Extraction** pulls parties, dates, scope, pricing, obligations, and the issues a reviewer needs to resolve.
-3. **Accounting review** works from the extraction and the contract to assess performance obligations, transaction price, allocation, and recognition timing, and raises the judgments that need a person.
+2. **Extraction (AGT-001)** pulls parties, dates, scope, pricing, obligations, and the issues a reviewer needs to resolve.
+3. **Accounting review (AGT-002)** works from the extraction and the contract to assess performance obligations, transaction price, allocation, and recognition timing, and raises the judgments that need a person.
 4. **Review** the findings next to the contract. Each one shows its required action, its reasoning, and the quoted clauses. The same issue raised by both steps, or by a rerun, stays one finding.
 5. **Publish** verified findings to Jira as issues. Publishing again, retrying after an outage, or rerunning an analysis never creates a duplicate issue.
 6. **Follow up in Jira.** AuditIQ mirrors each issue's status, assignee, and comments. Optionally, people can mention `@AuditIQ` in a comment and get a short reply grounded in the finding's quotes.

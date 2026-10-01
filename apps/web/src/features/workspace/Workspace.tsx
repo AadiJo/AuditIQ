@@ -9,7 +9,7 @@ import { Button, Modal, SectionMessage } from "../../components/ui.tsx";
 import { api, type ContractDetail, type PublishResult, type RunView, unwrap } from "../../lib/api.ts";
 import { formatDate, formatNumber, formatUsd } from "../../lib/format.ts";
 import { meQuery } from "../../lib/queries.ts";
-import { jiraUrl, RunProgress } from "./parts.tsx";
+import { agentName, jiraUrl, RunProgress } from "./parts.tsx";
 import { type PresetId, presets, useWorkspace, type ViewId, viewIds, viewLabels } from "./state.tsx";
 import { useRunEvents } from "./useRunEvents.ts";
 import { AnalysisView } from "./views/AnalysisView.tsx";
@@ -73,7 +73,7 @@ function RunDetails({ run, onClose }: { run: RunView; onClose: () => void }) {
     <Modal
       open
       onClose={onClose}
-      title={`${agents[run.agent].label} run`}
+      title={`${agentName(run.agent)} run`}
       footer={<Button onClick={onClose}>Close</Button>}
     >
       <dl className="grid grid-cols-[130px_1fr] gap-x-3 gap-y-2">
@@ -321,7 +321,7 @@ export function Workspace() {
       contract.runs[step].output ? (
         <div className="shrink-0 border-b border-line px-4 py-2">
           <SectionMessage tone="info">
-            {agents[step].label} is running again. These results update when it finishes.{" "}
+            {agentName(step)} is running again. These results update when it finishes.{" "}
             <button type="button" className="text-brand" onClick={() => cancel.mutate(running.id)}>
               Cancel
             </button>
@@ -332,7 +332,7 @@ export function Workspace() {
       )
     ) : latest?.status === "failed" ? (
       <div className="shrink-0 border-b border-line px-4 py-2">
-        <SectionMessage tone="error" title={`${agents[step].label} failed`}>
+        <SectionMessage tone="error" title={`${agentName(step)} failed`}>
           {latest.error}
         </SectionMessage>
       </div>
@@ -419,6 +419,7 @@ export function Workspace() {
                 onClick={() => setSearch({ step: agent, section: undefined, finding: undefined })}
                 className={`-mb-0.5 flex items-center gap-1.5 border-b-2 pb-2 pt-1 font-medium ${agent === step ? "border-brand text-brand" : "border-transparent text-ink-2 hover:text-ink"}`}
               >
+                <span className="font-normal opacity-70">{agents[agent].code}</span>
                 {agents[agent].label}
                 {(run?.status === "queued" || run?.status === "running") && (
                   <Clock className="size-3.5" aria-label="Running" />
@@ -431,6 +432,7 @@ export function Workspace() {
             className="-mb-0.5 border-b-2 border-transparent pb-2 pt-1 font-medium text-ink-4"
             title="The reporting agent isn't built yet."
           >
+            <span className="mr-1.5 font-normal">AGT-003</span>
             Report
           </span>
           <div className="grow" />

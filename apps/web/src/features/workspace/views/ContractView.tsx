@@ -1,9 +1,8 @@
 import type { Block, DocumentModel, Segment } from "@auditiq/shared";
-import { agents } from "@auditiq/shared";
 import { type CSSProperties, Fragment, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Logo, PriorityIcon } from "../../../components/icons.tsx";
 import type { Finding } from "../../../lib/api.ts";
-import { FindingBody, JiraCell, PaneEmpty } from "../parts.tsx";
+import { agentName, FindingBody, JiraCell, PaneEmpty } from "../parts.tsx";
 import { useWorkspace } from "../state.tsx";
 
 // The contract as a page. Quotes cited by findings get the inline-comment highlight, the
@@ -181,7 +180,7 @@ function MarginComment({ finding, active, onSelect }: { finding: Finding; active
         <Logo className="size-5" />
         <div className="min-w-0 grow leading-4">
           <div className="font-semibold">AuditIQ</div>
-          <div className="text-xs text-ink-2">{finding.raisedBy.map((agent) => agents[agent].label).join(" and ")}</div>
+          <div className="text-xs text-ink-2">{finding.raisedBy.map(agentName).join(" and ")}</div>
         </div>
         <PriorityIcon severity={finding.severity} />
       </div>

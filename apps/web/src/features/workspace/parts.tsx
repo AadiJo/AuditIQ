@@ -1,4 +1,4 @@
-import { agents, anchorLabel, clauseName, runSteps, topicLabels } from "@auditiq/shared";
+import { type AgentId, agents, anchorLabel, clauseName, runSteps, topicLabels } from "@auditiq/shared";
 import { useQuery } from "@tanstack/react-query";
 import { Circle, CircleCheck, CircleDot, ExternalLink, TriangleAlert } from "lucide-react";
 import { PriorityIcon, TaskIcon } from "../../components/icons.tsx";
@@ -8,6 +8,11 @@ import { formatNumber, formatRelative } from "../../lib/format.ts";
 import { findingQuery, meQuery } from "../../lib/queries.ts";
 import { useWorkspace } from "./state.tsx";
 import type { RunProgressState } from "./useRunEvents.ts";
+
+/** "Extraction (AGT-001)": the step's name plus the agent code from the AuditIQ concept doc. */
+export function agentName(agent: AgentId): string {
+  return `${agents[agent].label} (${agents[agent].code})`;
+}
 
 export function jiraUrl(siteUrl: string | undefined, key: string): string {
   return siteUrl ? `${siteUrl}/browse/${key}` : "#";
@@ -204,7 +209,7 @@ export function RunProgress({
     <div className="px-6 py-5">
       <SectionMessage
         tone="info"
-        title={`${agents[agent].label} is ${progress.status === "queued" ? "queued" : "running"}`}
+        title={`${agentName(agent)} is ${progress.status === "queued" ? "queued" : "running"}`}
       >
         It keeps going if you leave this page, and anyone who opens this contract sees the same progress.
       </SectionMessage>
