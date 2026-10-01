@@ -67,6 +67,14 @@ export function watcherReply(input: { reply: string; clauses: string[]; marker: 
   ]);
 }
 
+/** Account ids of everyone @mentioned in an ADF document. */
+export function mentionedAccountIds(node: unknown): string[] {
+  if (!node || typeof node !== "object") return [];
+  const n = node as { type?: string; attrs?: { id?: string }; content?: unknown[] };
+  const own = n.type === "mention" && n.attrs?.id ? [n.attrs.id] : [];
+  return [...own, ...(n.content ?? []).flatMap(mentionedAccountIds)];
+}
+
 /** Flattens an ADF document to plain text. Mentions keep their display text, like "@AuditIQ". */
 export function adfToText(node: unknown): string {
   if (typeof node === "string") return node;

@@ -41,8 +41,12 @@ const injectionSignals = [
   /change (?:your |the )?(?:policy|permissions|rules)/i,
 ];
 
-export function mentionsAuditIQ(body: string): boolean {
-  return /@auditiq\b/i.test(body);
+/**
+ * True when a comment asks AuditIQ something: it @mentions AuditIQ's Jira account (the
+ * editor's mention picker, whatever that account is called) or contains the text "@AuditIQ".
+ */
+export function mentionsAuditIQ(comment: JiraCommentSnapshot, serviceAccountId: string): boolean {
+  return (comment.mentions ?? []).includes(serviceAccountId) || /@auditiq\b/i.test(comment.body);
 }
 
 function record(input: {
@@ -90,7 +94,7 @@ export async function considerComment(
   const mode = getSetting("watcher").mode;
   if (mode === "off") return false;
   if (comment.authorAccountId && comment.authorAccountId === serviceAccountId) return false;
-  if (/AuditIQ reply [0-9a-f]{8}/.test(comment.body) || !mentionsAuditIQ(comment.body)) return false;
+  if (/AuditIQ reply [0-9a-f]{8}/.test(comment.body) || !mentionsAuditIQ(comment, serviceAccountId)) return false;
   if (db.select().from(watcherDecisions).where(eq(watcherDecisions.changeKey, changeKey)).get()) return false;
 
   const reject = (policy: string) =>

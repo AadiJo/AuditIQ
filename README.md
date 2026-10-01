@@ -88,7 +88,7 @@ Analysis runs are isolated from the host's own agent setup. Claude runs with no 
 - **Roles.** The first account is the owner, an admin. Admins invite people under **Settings > Members** by copying an invite link, so no mail server is needed. Reviewers upload, run, and publish; admins also manage settings and members.
 - **The workspace.** A contract opens in two resizable panes. Each pane can show the analysis, a findings table, one finding in detail, the contract, or its outline. The **Review**, **Read**, and **Triage** presets set up common layouts. The URL holds the layout and the selected finding, so a link opens exactly what you were looking at.
 - **Runs** happen on the server. Closing the tab doesn't stop them, and a teammate opening the contract sees the same progress.
-- **The Jira watcher** (**Settings > Jira watcher**) answers `@AuditIQ` questions in issue comments. Start in **Shadow** mode, which records what it would say without posting. **Assist** posts replies. A reply is only posted if it relies solely on the finding's verified quotes, passes a confidence bar, and fits a budget of three replies per issue per hour. Comments that look like prompt injection are refused before any model call.
+- **The Jira watcher** (**Settings > Jira watcher**) answers questions in issue comments that @mention AuditIQ's Jira account, or contain the text `@AuditIQ`. Start in **Shadow** mode, which records what it would say without posting. **Assist** posts replies. A reply is only posted if it relies solely on the finding's verified quotes, passes a confidence bar, and fits a budget of three replies per issue per hour. Comments that look like prompt injection are refused before any model call.
 
 ## Development
 
@@ -116,6 +116,12 @@ The end-to-end suite is the test suite. It starts the real server with the built
 Each run leaves a report in `e2e/.artifacts/report` with a trace and screenshots for every test, plus the fake Jira's full contents as attachments.
 
 The test contract lives in `e2e/fixtures/northwind-msa.md` and is built into DOCX and PDF at test time. To re-record the replay fixtures after changing a prompt or schema, run the server with `AUDITIQ_RECORD_DIR=e2e/fixtures/replay`, then upload the contract and run both steps.
+
+### Live Jira test
+
+The suite above uses a fake Jira. To check against a real Jira Cloud sandbox, run `e2e/live/setup.sh`. It walks you through connecting AuditIQ to the sandbox and creating a token for a reviewer account, then runs `pnpm smoke:jira`.
+
+The test publishes up to three findings and checks each issue through Jira's own API. It then publishes again to confirm nothing duplicates, moves one issue and checks that AuditIQ picks up the change, and asks AuditIQ questions with a real `@mention`, first in shadow mode and then in assist mode. The mention part needs a second Atlassian account for AuditIQ, because it ignores its own comments. Reruns reuse the same issues. Each run writes a report to `e2e/.artifacts/live`.
 
 ### Evals
 

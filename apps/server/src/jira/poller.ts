@@ -3,7 +3,7 @@ import { audit } from "../audit.ts";
 import { db } from "../db/client.ts";
 import { findings, type JiraCommentSnapshot, jiraChanges, jiraIssues, jiraLinks } from "../db/schema.ts";
 import { getSetting, updateSetting } from "../settings.ts";
-import { adfToText } from "./adf.ts";
+import { adfToText, mentionedAccountIds } from "./adf.ts";
 import { type Issue, issueFields, type JiraClient } from "./client.ts";
 import { configuredJira, findingIdFromLabels, MANAGED_LABEL } from "./publisher.ts";
 import { considerComment } from "./watcher.ts";
@@ -32,6 +32,7 @@ function snapshotComments(issue: Issue): JiraCommentSnapshot[] {
     authorAccountId: c.author?.accountId ?? null,
     authorName: c.author?.displayName ?? "Unknown",
     body: adfToText(c.body).trim(),
+    mentions: mentionedAccountIds(c.body),
     created: c.created,
   }));
 }

@@ -36,6 +36,7 @@ function jiraView() {
     tokenHint: jira.apiToken?.hint ?? null,
     tokenReadable: jira.apiToken ? unseal(jira.apiToken) !== null : null,
     displayName: jira.displayName,
+    accountId: jira.accountId,
     projectKey: jira.projectKey,
     projectName: jira.projectName,
     issueTypeId: jira.issueTypeId,

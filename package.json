@@ -17,13 +17,16 @@
     "e2e": "playwright test",
     "eval": "node evals/run.ts",
     "db:generate": "pnpm --filter @auditiq/server db:generate",
-    "cli-login": "pnpm --filter @auditiq/server cli-login"
+    "cli-login": "pnpm --filter @auditiq/server cli-login",
+    "smoke:jira": "node e2e/live/jira-smoke.ts"
   },
   "devDependencies": {
+    "@auditiq/server": "workspace:*",
     "@auditiq/shared": "workspace:*",
     "@biomejs/biome": "^2.5.14",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
+    "hono": "^4.13.9",
     "typescript": "^7.0.2"
   }
 }

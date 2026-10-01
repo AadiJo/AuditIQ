@@ -240,6 +240,8 @@ export type JiraCommentSnapshot = {
   authorAccountId: string | null;
   authorName: string;
   body: string;
+  /** Account ids of people @mentioned in the comment. */
+  mentions: string[];
   created: string;
 };
 

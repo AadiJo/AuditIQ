@@ -64,7 +64,13 @@ test.afterAll(async () => {
 test("shadow mode records a decision without writing to Jira", async ({ request }, testInfo) => {
   await ensureWorkspace(request);
   await setMode(request, "shadow");
-  await jiraControl("comment", { key: issueKey, text: "@AuditIQ which clause makes this a problem?" });
+  // An editor-style mention of AuditIQ's account. Its display text isn't "@AuditIQ", so this
+  // only triggers if the watcher matches the account id.
+  await jiraControl("comment", {
+    key: issueKey,
+    text: "which clause makes this a problem?",
+    mention: { id: "svc-auditiq", text: "@Compliance Bot" },
+  });
   await poll(request);
 
   const activity = (await (await request.get("/api/jira/activity")).json()) as {

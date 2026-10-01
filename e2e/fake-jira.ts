@@ -3,8 +3,11 @@ import { HOST } from "./env.ts";
 
 // An in-memory Jira Cloud that implements the REST v3 endpoints AuditIQ calls, plus
 // /__control routes the tests use to add comments, change statuses, inject failures, and
-// read back everything AuditIQ wrote. Start it with `node e2e/fake-jira.ts <port>`.
+// read back everything AuditIQ wrote. Two accounts can sign in: AuditIQ's service account
+// and a reviewer, so the live smoke test (e2e/live/jira-smoke.ts) can rehearse against it.
+// Start it with `node e2e/fake-jira.ts <port>`.
 
+type Account = { accountId: string; displayName: string; emailAddress: string; token: string };
 type Comment = { id: string; author: { accountId: string; displayName: string }; body: unknown; created: string };
 type Issue = {
   id: string;
@@ -12,8 +15,8 @@ type Issue = {
   fields: {
     summary: string;
     labels: string[];
-    priority: { id: string } | null;
-    issuetype: { id: string };
+    priority: { id: string; name: string } | null;
+    issuetype: { id: string; name: string };
     description: unknown;
     status: { name: string; statusCategory: { key: string } };
     assignee: { displayName: string } | null;
@@ -23,12 +26,34 @@ type Issue = {
 };
 type Failure = { method: string; pathPrefix: string; status: number; times: number; retryAfter?: number };
 
-export const SERVICE_ACCOUNT = {
+export const SERVICE_ACCOUNT: Account = {
   accountId: "svc-auditiq",
   displayName: "AuditIQ Service",
   emailAddress: "auditiq-bot@example.com",
+  token: "fake-jira-token",
 };
-export const TOKEN = "fake-jira-token";
+export const REVIEWER_ACCOUNT: Account = {
+  accountId: "user-dana",
+  displayName: "Dana Kim",
+  emailAddress: "dana@example.com",
+  token: "fake-reviewer-token",
+};
+const accounts = [SERVICE_ACCOUNT, REVIEWER_ACCOUNT];
+const priorities = [
+  { id: "2", name: "High" },
+  { id: "3", name: "Medium" },
+  { id: "4", name: "Low" },
+];
+const issueTypes = [
+  { id: "10001", name: "Task", subtask: false },
+  { id: "10002", name: "Sub-task", subtask: true },
+];
+const statuses = {
+  "11": { name: "To Do", statusCategory: { key: "new" } },
+  "21": { name: "In Progress", statusCategory: { key: "indeterminate" } },
+  "31": { name: "Done", statusCategory: { key: "done" } },
+} as const;
+const publicAccount = ({ token: _, ...account }: Account) => account;
 
 const state = {
   issues: new Map<string, Issue>(),
@@ -89,11 +114,22 @@ async function handleControl(req: http.IncomingMessage, res: http.ServerResponse
   if (path === "/__control/comment") {
     const author = { accountId: String(body.accountId ?? "user-dana"), displayName: String(body.author ?? "Dana Kim") };
     const text = String(body.text);
+    // `mention` adds an editor-style @mention node, the way Jira's mention picker writes one.
+    const mention = body.mention as { id: string; text: string } | undefined;
+    const content = [
+      ...(mention
+        ? [
+            { type: "mention", attrs: mention },
+            { type: "text", text: " " },
+          ]
+        : []),
+      { type: "text", text },
+    ];
     issue.fields.comment.comments.push({
       id: String(state.nextId++),
       author,
       created: now(),
-      body: { type: "doc", version: 1, content: [{ type: "paragraph", content: [{ type: "text", text }] }] },
+      body: { type: "doc", version: 1, content: [{ type: "paragraph", content }] },
     });
     issue.fields.comment.total = issue.fields.comment.comments.length;
     touch(issue);
@@ -113,9 +149,10 @@ async function handleControl(req: http.IncomingMessage, res: http.ServerResponse
 }
 
 async function handleApi(req: http.IncomingMessage, res: http.ServerResponse, path: string, method: string) {
-  const expected = `Basic ${Buffer.from(`${SERVICE_ACCOUNT.emailAddress}:${TOKEN}`).toString("base64")}`;
-  if (req.headers.authorization !== expected)
-    return json(res, 401, { errorMessages: ["Client must be authenticated to access this resource."] });
+  const me = accounts.find(
+    (a) => req.headers.authorization === `Basic ${Buffer.from(`${a.emailAddress}:${a.token}`).toString("base64")}`,
+  );
+  if (!me) return json(res, 401, { errorMessages: ["Client must be authenticated to access this resource."] });
 
   const failure = state.failures.find((f) => f.times > 0 && f.method === method && path.startsWith(f.pathPrefix));
   if (failure) {
@@ -128,26 +165,16 @@ async function handleApi(req: http.IncomingMessage, res: http.ServerResponse, pa
     );
   }
 
-  if (method === "GET" && path === "/rest/api/3/myself") return json(res, 200, { ...SERVICE_ACCOUNT, timeZone: "UTC" });
+  if (method === "GET" && path === "/rest/api/3/myself")
+    return json(res, 200, { ...publicAccount(me), timeZone: "UTC" });
   if (method === "GET" && path === "/rest/api/3/project/search") {
     return json(res, 200, { values: [{ id: "10000", key: "AISBX", name: "AuditIQ Sandbox" }] });
   }
   if (method === "GET" && path === "/rest/api/3/issue/createmeta/AISBX/issuetypes") {
-    return json(res, 200, {
-      issueTypes: [
-        { id: "10001", name: "Task", subtask: false },
-        { id: "10002", name: "Sub-task", subtask: true },
-      ],
-    });
+    return json(res, 200, { issueTypes });
   }
   if (method === "GET" && path === "/rest/api/3/priority/search") {
-    return json(res, 200, {
-      values: [
-        { id: "2", name: "High" },
-        { id: "3", name: "Medium" },
-        { id: "4", name: "Low" },
-      ],
-    });
+    return json(res, 200, { values: priorities });
   }
   if (method === "POST" && path === "/rest/api/3/search/jql") {
     const body = await readBody(req);
@@ -163,8 +190,8 @@ async function handleApi(req: http.IncomingMessage, res: http.ServerResponse, pa
       fields: {
         summary: String(fields.summary),
         labels: (fields.labels as string[]) ?? [],
-        priority: (fields.priority as { id: string }) ?? null,
-        issuetype: fields.issuetype as { id: string },
+        priority: priorities.find((p) => p.id === (fields.priority as { id: string } | undefined)?.id) ?? null,
+        issuetype: issueTypes.find((t) => t.id === (fields.issuetype as { id: string }).id) ?? { id: "", name: "" },
         description: fields.description,
         status: { name: "To Do", statusCategory: { key: "new" } },
         assignee: null,
@@ -175,18 +202,39 @@ async function handleApi(req: http.IncomingMessage, res: http.ServerResponse, pa
     state.issues.set(issue.key, issue);
     return json(res, 201, { id: issue.id, key: issue.key });
   }
-  const issueMatch = path.match(/^\/rest\/api\/3\/issue\/([A-Z]+-\d+)(\/comment)?$/);
+  const issueMatch = path.match(/^\/rest\/api\/3\/issue\/([A-Z]+-\d+)(\/comment|\/transitions|\/assignee)?$/);
   if (issueMatch?.[1]) {
     const issue = state.issues.get(issueMatch[1]);
+    const sub = issueMatch[2];
     if (!issue)
       return json(res, 404, { errorMessages: ["Issue does not exist or you do not have permission to see it."] });
-    if (!issueMatch[2] && method === "GET") return json(res, 200, issue);
-    if (issueMatch[2] && method === "GET") return json(res, 200, { comments: issue.fields.comment.comments });
-    if (issueMatch[2] && method === "POST") {
+    if (!sub && method === "GET") return json(res, 200, issue);
+    if (sub === "/transitions" && method === "GET") {
+      return json(res, 200, {
+        transitions: Object.entries(statuses).map(([id, to]) => ({ id, name: to.name, to })),
+      });
+    }
+    if (sub === "/transitions" && method === "POST") {
+      const { transition } = (await readBody(req)) as { transition: { id: keyof typeof statuses } };
+      issue.fields.status = statuses[transition.id];
+      touch(issue);
+      res.writeHead(204).end();
+      return;
+    }
+    if (sub === "/assignee" && method === "PUT") {
+      const { accountId } = (await readBody(req)) as { accountId: string | null };
+      const assignee = accounts.find((a) => a.accountId === accountId);
+      issue.fields.assignee = assignee ? { displayName: assignee.displayName } : null;
+      touch(issue);
+      res.writeHead(204).end();
+      return;
+    }
+    if (sub === "/comment" && method === "GET") return json(res, 200, { comments: issue.fields.comment.comments });
+    if (sub === "/comment" && method === "POST") {
       const { body } = (await readBody(req)) as { body: unknown };
       const comment = {
         id: String(state.nextId++),
-        author: { accountId: SERVICE_ACCOUNT.accountId, displayName: SERVICE_ACCOUNT.displayName },
+        author: { accountId: me.accountId, displayName: me.displayName },
         body,
         created: now(),
       };
