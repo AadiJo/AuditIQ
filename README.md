@@ -1,20 +1,5 @@
 # AuditIQ
 
-AuditIQ reads customer contracts and flags what matters for ASC 606 revenue recognition. It extracts the revenue-relevant terms, drafts the accounting analysis, and turns each open question into a Jira issue your team already knows how to work.
-
-Every finding quotes the contract. AuditIQ checks each quote against the clause it claims to come from, and a finding whose quotes don't match stays out of Jira with the reason shown. People make the calls. AuditIQ never resolves, reassigns, or re-prioritizes an issue.
-
-It runs on your own server. Analyses go through Claude or Codex, using the CLI login on that server or an API key.
-
-## What it does
-
-1. **Upload** a contract (DOCX, or PDF with a text layer). AuditIQ numbers every clause (sections, articles, exhibits) so it can check citations later.
-2. **Extraction (AGT-001)** pulls parties, dates, scope, pricing, obligations, and the issues a reviewer needs to resolve.
-3. **Accounting review (AGT-002)** works from the extraction and the contract to assess performance obligations, transaction price, allocation, and recognition timing, and raises the judgments that need a person.
-4. **Review** the findings next to the contract. Each one shows its required action, its reasoning, and the quoted clauses. The same issue raised by both steps, or by a rerun, stays one finding.
-5. **Publish** verified findings to Jira as issues. Publishing again, retrying after an outage, or rerunning an analysis never creates a duplicate issue.
-6. **Follow up in Jira.** AuditIQ mirrors each issue's status, assignee, and comments. Optionally, people can mention `@AuditIQ` in a comment and get a short reply grounded in the finding's quotes.
-
 ## Quick start
 
 ### Docker
@@ -24,7 +9,7 @@ git clone <this repository> auditiq && cd auditiq
 docker compose up -d
 ```
 
-Open http://localhost:5180 and create the owner account. The setup steps walk you through connecting Jira and choosing an AI provider.
+Open http://localhost:5180 and follow [First-time setup](#first-time-setup).
 
 Everything AuditIQ stores lives in the `auditiq-data` volume: the database, uploaded contracts, and CLI logins.
 
@@ -45,7 +30,80 @@ pnpm build
 pnpm start
 ```
 
-AuditIQ listens on `127.0.0.1:5180` by default. Put a reverse proxy with TLS in front of it and set `BASE_URL` to the address people use. [docs/operations.md](docs/operations.md) has a Caddy example, a systemd unit, and backup instructions.
+AuditIQ listens on `127.0.0.1:5180` by default. Put a reverse proxy with TLS in front of it and set `BASE_URL` to the address people use.
+
+## First-time setup
+
+You need three things before you start:
+
+- **A Jira Cloud site** with a project for findings to land in. Jira's Free plan works, and covers up to 10 users.
+- **An Atlassian account for AuditIQ to act as**, with permission to create issues in that project. A dedicated account such as `auditiq-bot@yourcompany.com` keeps AuditIQ's work easy to spot and its permissions narrow. Your own account works too, but then your own @mentions won't reach the [Jira watcher](#the-jira-watcher).
+- **A way to run models.** That's a Claude or Codex CLI login on the server, or an Anthropic or OpenAI API key.
+
+### 1. Create the owner account
+
+The first time you open AuditIQ, it asks you to **Create the owner account**. Enter your name, your email, and a password of at least 10 characters. This account is an admin. After this, people can only join with an invite link.
+
+### 2. Connect Jira (setup step 1 of 2)
+
+First, create an API token for AuditIQ's Atlassian account:
+
+1. Sign in as that account at [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens).
+2. Select **Create API token**. Classic and scoped tokens both work.
+3. Name it `AuditIQ` and check **Expires on**. Atlassian sets it about a week out by default. Pick a later date, up to a year away, or AuditIQ loses its connection when the token expires.
+4. Select **Create**, then copy the token. Atlassian shows it only once.
+
+Atlassian sometimes asks you to re-verify your identity before it creates a token. Select **Verify your identity** in the dialog, enter the code Atlassian emails you, and create the token again.
+
+Then fill in the Jira page in AuditIQ:
+
+1. Enter the **Site URL** (`https://your-site.atlassian.net`), the account's **Email**, and the **API token**, then select **Save and test**. AuditIQ shows which Jira account it connected as.
+2. Under **Where findings go**, choose the **Project**, the **Issue type** (Task works well), and the **Jira priority for each finding level**. Leave a level blank to create those issues without a priority.
+3. Select **Save and continue**.
+
+AuditIQ tags every issue it creates with the `auditiq` label plus one label per finding (`auditiq-fnd-...`). It uses that label to find issues it already created, so it needs no custom fields or Jira admin changes. Don't remove the labels.
+
+Each issue holds the finding's reasoning, its required action, the contract term and quoted clauses, the contract's number or file name, and a link back to AuditIQ. The contract file and the full analysis stay on your server.
+
+### 3. Choose an AI provider (setup step 2 of 2)
+
+Under **Run analyses with**, pick Claude or Codex, then choose the model and effort. Medium effort suits most contracts. AuditIQ uses the server's CLI login for that provider if there is one, and the API key otherwise. [AI providers](#ai-providers) explains both. Select **Finish setup**.
+
+### 4. Invite your team
+
+Under **Settings > Members**, enter a teammate's email, pick a role, and select **Invite**. Then send them the link from **Copy link**. AuditIQ needs no mail server. There are two roles:
+
+- **Reviewers** upload contracts, run analyses, and publish findings.
+- **Admins** can also change settings and manage members.
+
+## Reviewing a contract
+
+1. **Upload it.** On **Contracts**, select **Upload contract**, or drop a file anywhere on the page. Extraction starts on its own.
+2. **Wait for extraction.** Runs happen on the server, so you can close the tab, and a teammate who opens the contract sees the same progress. The contract list shows where each contract stands: **Extraction ready**, then **Ready for review**, then **All findings in Jira**.
+3. **Run the accounting review.** Open the contract, switch to the **Accounting review** step, and select **Run accounting review**. It builds on the extraction, so it's available once extraction finishes.
+4. **Review the findings.** Each finding shows its required action, its reasoning, and the clauses it quotes. The workspace has two resizable panes, and the **Review**, **Read**, and **Triage** presets arrange them for common jobs. A finding whose quotes don't match the contract is **held back**. It shows the reason and can't be published.
+5. **Publish.** Verified findings that aren't in Jira yet start out checked. Uncheck any you want to leave out, select **Publish to Jira**, and confirm. The dialog links to each new issue.
+6. **Work the issues in Jira.** AuditIQ checks Jira every minute and mirrors each issue's status, assignee, and comments. **Jira activity** shows recent changes, the watcher's decisions, and publishes waiting on a retry. **Check Jira now** checks right away.
+
+The URL holds the workspace layout and the selected finding, so a link opens exactly what you were looking at. **Findings** lists the findings from every contract in one place.
+
+## The Jira watcher
+
+People can ask AuditIQ about a finding from inside the Jira issue. They @mention AuditIQ's Jira account in a comment, or write `@AuditIQ`. Choose the mode under **Settings > Jira watcher**:
+
+- **Off**: AuditIQ ignores mentions.
+- **Shadow**: AuditIQ records the reply it would post, and posts nothing. Start here, and read its drafts on **Jira activity**.
+- **Assist**: AuditIQ posts replies.
+
+AuditIQ only posts a reply that relies on the finding's verified quotes alone, clears a confidence bar, stays under 1,500 characters, and fits a budget of three replies per issue per hour. It refuses comments that look like prompt injection before any model call.
+
+AuditIQ ignores comments from its own Atlassian account, so it never answers itself. If it acts as your personal account, it ignores your mentions too. Give it a dedicated account if people should be able to ask it questions.
+
+## Keeping the Jira connection working
+
+- **The token expired.** Create a new one as in [step 2](#2-connect-jira-setup-step-1-of-2). Then go to **Settings > Jira**, paste it into **API token**, and select **Save and test**.
+- **Jira says "Your Jira Cloud subscription has been deactivated due to inactivity".** Atlassian switches off free sites that go unused for a while, and emails the site admin before it does. To turn the site back on, go to [admin.atlassian.com](https://admin.atlassian.com), open **Billing > Subscriptions**, select the **Inactive** tab, and select **Reactivate** next to Jira. It stays on the Free plan. Atlassian restores your data if you reactivate within 15 days of the shutdown, and deletes it after that. Jira's API can take a couple of minutes to answer again.
+- **Issues stopped syncing.** **Jira activity** shows the error from the last check. **Save and test** under **Settings > Jira** checks the connection again.
 
 ## Configuration
 
@@ -60,18 +118,6 @@ Almost everything is configured in the app under **Settings**, by an admin. The 
 | `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` | unset | Used only when there's no CLI login on the server. Can also be set in Settings. |
 | `JIRA_POLL_SECONDS` | `60` | How often AuditIQ checks Jira for changes. |
 
-### Connecting Jira
-
-AuditIQ works with Jira Cloud.
-
-1. Create an Atlassian account for AuditIQ to act as, such as `auditiq-bot@yourcompany.com`, and give it access to one project. Its work is then easy to spot in Jira, and its permissions stay narrow.
-2. Create an API token for that account at [id.atlassian.com](https://id.atlassian.com/manage-profile/security/api-tokens). Classic and scoped tokens both work.
-3. In AuditIQ, go to **Settings > Jira**, enter the site URL, email, and token, then pick the project, the issue type, and which Jira priority each finding level maps to.
-
-AuditIQ tags every issue it creates with the `auditiq` label plus one label per finding (`auditiq-fnd-...`). That label is how it finds existing issues, so no custom fields or Jira admin changes are needed. Don't remove the labels.
-
-What goes to Jira: the finding, its required action, its reasoning, the quoted clauses, and a link back to AuditIQ. The contract file and the full analysis stay on your server.
-
 ### AI providers
 
 **Settings > AI provider** picks between Claude (Anthropic) and Codex (OpenAI) and sets the model and effort. For each provider, AuditIQ uses:
@@ -82,13 +128,6 @@ What goes to Jira: the finding, its required action, its reasoning, the quoted c
 The settings page shows which one is in use and why a provider isn't ready. Admins can let reviewers switch provider for a single run.
 
 Analysis runs are isolated from the host's own agent setup. Claude runs with no tools, no settings files, and no skills. Codex runs in a private home directory with its shell, apps, plugins, and web search turned off, so the host's AGENTS.md and MCP servers never reach an AuditIQ prompt. The model only sees the contract and the instructions AuditIQ gives it.
-
-## Using it
-
-- **Roles.** The first account is the owner, an admin. Admins invite people under **Settings > Members** by copying an invite link, so no mail server is needed. Reviewers upload, run, and publish; admins also manage settings and members.
-- **The workspace.** A contract opens in two resizable panes. Each pane can show the analysis, a findings table, one finding in detail, the contract, or its outline. The **Review**, **Read**, and **Triage** presets set up common layouts. The URL holds the layout and the selected finding, so a link opens exactly what you were looking at.
-- **Runs** happen on the server. Closing the tab doesn't stop them, and a teammate opening the contract sees the same progress.
-- **The Jira watcher** (**Settings > Jira watcher**) answers questions in issue comments that @mention AuditIQ's Jira account, or contain the text `@AuditIQ`. Start in **Shadow** mode, which records what it would say without posting. **Assist** posts replies. A reply is only posted if it relies solely on the finding's verified quotes, passes a confidence bar, and fits a budget of three replies per issue per hour. Comments that look like prompt injection are refused before any model call.
 
 ## Development
 
@@ -106,31 +145,3 @@ pnpm e2e            # end-to-end tests
 pnpm eval           # score the agents on the test contract (calls models)
 pnpm db:generate    # new migration after editing apps/server/src/db/schema.ts
 ```
-
-[docs/architecture.md](docs/architecture.md) explains how the pieces fit together.
-
-### Tests
-
-The end-to-end suite is the test suite. It starts the real server with the built web app against a fake Jira (`e2e/fake-jira.ts`) and replays model output recorded from real Claude runs (`e2e/fixtures/replay`). It covers setup, both analysis steps, publishing and republishing, Jira outages and rate limits, the watcher's gates, roles, PDFs, and failed runs.
-
-Each run leaves a report in `e2e/.artifacts/report` with a trace and screenshots for every test, plus the fake Jira's full contents as attachments.
-
-The test contract lives in `e2e/fixtures/northwind-msa.md` and is built into DOCX and PDF at test time. To re-record the replay fixtures after changing a prompt or schema, run the server with `AUDITIQ_RECORD_DIR=e2e/fixtures/replay`, then upload the contract and run both steps.
-
-### Live Jira test
-
-The suite above uses a fake Jira. To check against a real Jira Cloud sandbox, run `e2e/live/setup.sh`. It walks you through connecting AuditIQ to the sandbox and creating a token for a reviewer account, then runs `pnpm smoke:jira`.
-
-The test publishes up to three findings and checks each issue through Jira's own API. It then publishes again to confirm nothing duplicates, moves one issue and checks that AuditIQ picks up the change, and asks AuditIQ questions with a real `@mention`, first in shadow mode and then in assist mode. The mention part needs a second Atlassian account for AuditIQ, because it ignores its own comments. Reruns reuse the same issues. Each run writes a report to `e2e/.artifacts/live`.
-
-### Evals
-
-`pnpm eval` runs both agents on every signed-in provider and scores them against the 14 ASC 606 issues planted in the Northwind contract (`evals/northwind.expected.json`). It reports recall and citation validity. `pnpm eval --replay` scores the recorded fixtures without calling a model. Reports go to `evals/reports`.
-
-## Security
-
-- Uploaded contracts, analyses, and the audit log stay on your server. Jira receives only the finding summary, the required action, and the quoted clauses.
-- Jira tokens and API keys are encrypted at rest with a key derived from `AUDITIQ_SECRET`. The API never returns them, and the stored Jira token is only ever sent to the site it was entered for. Admins see the last four characters.
-- Contract text and Jira comments are treated as untrusted. Analysis runs have no tools, and watcher replies pass deterministic checks before anything is posted.
-- Every run, publish, Jira write, watcher decision, and settings change is recorded with the person who caused it. **Settings > Audit log** exports it all as JSON.
-- Only the first account, or someone holding an invite link, can sign up. Knowing an invited person's email isn't enough. Sign-in is rate limited.
