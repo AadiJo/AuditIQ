@@ -25,7 +25,13 @@ export const WATCHER_POLICY = {
 
 const Decision = z.object({
   decision: z.enum(["reply", "no_action"]),
-  reply: z.string().describe("The answer to post, or an empty string for no_action."),
+  // The policy below rejects replies over maxReplyChars. Models count characters loosely,
+  // so they get a target well under the limit.
+  reply: z
+    .string()
+    .describe(
+      `The answer to post, or an empty string for no_action. Aim for under ${Math.round(WATCHER_POLICY.maxReplyChars * 0.6)} characters; replies over ${WATCHER_POLICY.maxReplyChars} are discarded.`,
+    ),
   clauses: z.array(z.string()).describe("Anchor IDs from the verified citations that support the reply."),
   confidence: z.number().describe("0 to 1."),
   rationale: z.string().describe("Why you chose this decision. Not posted."),

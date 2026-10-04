@@ -397,11 +397,12 @@ async function main() {
     });
   }
 
+  // Jira dates carry the viewer's timezone offset (e.g. -0500), so compare instants, not strings.
   const auditiqReplies = async (since: string) =>
     (await comments(firstKey)).filter(
       (c) =>
         c.author.accountId === settings.accountId &&
-        c.created >= since &&
+        Date.parse(c.created) >= Date.parse(since) &&
         JSON.stringify(c.body).includes("AuditIQ reply"),
     );
 
